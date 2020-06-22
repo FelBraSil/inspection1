@@ -1,0 +1,82 @@
+<template name="alarmhistory">
+  <div class="container">
+    <h4 class="alert-heading"> <i class="mdi mdi-alert " ></i> Alertas Recibidas</h4>
+    {{#if admin}}
+      <div class="row nomargin ">
+        <div  class="caption elementbuttons">
+          <a href="#" class="btn btn-primary"><i id="cleanAlarmHistory" class="mdi mdi-pencil" style="color:white;">Clean Alarm History</i></a>
+        </div>
+      </div>
+    {{/if}}
+    <hr>
+    {{#each alarmitem in thisAlarmList}}
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " style="padding:5px">
+              {{dateFormatFull}}
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 " style="padding:5px">
+              <a href="{{resolveTopicById alarmitem.topicId true}}">
+                <p class="mb-0"><i class="mdi mdi-alert-circle " ></i>
+            {{#each alarmsubitem in  resolveTopicById alarmitem.topicId false}}
+
+
+                  {{#if evalParam alarmsubitem.class "resource"}}
+                        <div  class="label label-default" style="">
+                        <i class="mdi mdi-server-network"></i> {{alarmsubitem.value}}
+                        </div>
+                  {{else}}
+                      {{#if evalParam alarmsubitem.class "varname"}}
+                          <div  class="label label-danger alarm" style="background:rgba(150,10,10,0.7)!important">
+                          <i class="mdi mdi-comment-alert"></i> {{alarmsubitem.value}}
+                          </div>
+                      {{else}}
+                          {{#if evalParam alarmsubitem.class "subresource"}}
+                              <div  class="label label-default " style="">
+                              <i class="mdi mdi-plus-network"></i> {{alarmsubitem.value}}
+                              </div>
+                          {{else}}
+                              {{#if shortpaths}}
+
+                              {{else}}
+                                    {{#if evalParam alarmsubitem.class "group"}}
+                                        <div  class="label label-info " style="">
+                                        <i class="mdi mdi-folder-multiple"></i> {{alarmsubitem.value}}
+                                        </div>
+                                    {{else}}
+                                        {{#if evalParam alarmsubitem.class "resourcegroup"}}
+                                            <div  class="label label-primary" style="">
+                                            <i class="mdi mdi-google-circles-group"></i> {{alarmsubitem.value}}
+                                            </div>
+                                        {{else}}
+                                            <div  class="label label-warning alarm" style="">
+                                            <i class="mdi mdi-comment-alert-outline"></i> {{alarmsubitem.value}}
+                                            </div>
+                                        {{/if}}
+                                    {{/if}}
+                              {{/if}}
+                          {{/if}}
+                      {{/if}}
+                  {{/if}}
+            {{/each}}
+            </p>
+          </a>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 " style="padding:5px">
+            {{#if evalToBool alarmitem.value}}
+                <div  class="label label-warning alarm" style="">
+                <i class="mdi mdi-comment-alert-outline"></i> Alarma Iniciada!
+                </div>
+            {{else}}
+                <div  class="label label-default" style="">
+                <i class="mdi mdi-comment-alert-outline"></i> Alarma Finalizada
+                </div>
+            {{/if}}
+          </div>
+
+        </div>
+
+    {{else}}
+         <h4 class="alert-heading"> <i class="mdi mdi-checkbox-marked-circle " ></i> Sin Alertas</h4>
+    {{/each}}
+  </div>
+</template>

@@ -1,0 +1,98 @@
+<template name="minimalMqttObjectBig">
+  <div class="{{#if wide}}col-xs-12 col-sm-12 col-md-12 col-lg-12 {{else}} col-xs-12 col-sm-6 col-md-4 col-lg-3 {{/if}} " style="padding:5px">
+
+    <div class="thumbnail zoomIn animated {{element.ui.thumbnailclass}} {{#if element.__alarm}}alarm{{/if}}" >
+       <div class="row nomargin">
+                <div class="row">
+                      <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                          <a class="centeredText" href="/{{#if edit}}elementedit{{else}}element{{/if}}/{{#if subelem}}{{elementid}}/{{subgroupid}}/{{/if}}{{element.__id}}">
+                            {{#if subelem}}
+                              <i class="mdi mdi-plus-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                            {{else}}
+                              {{#if evalParam element.meta.content.type "networkDevice"}}
+                                    <i class="mdi mdi-server-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                              {{else}}
+                                  {{#if evalParam element.meta.content.type "ampDevice"}}
+                                      <img src="/img/amp.svg" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;">
+                                  {{else}}
+                                        <i class="mdi mdi-server-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                                  {{/if}}
+                              {{/if}}
+                              {{#if element.online.value}}
+                                 <i class="mdi mdi-wifi" style="font-size:20px;max-height:20px;vertical-align: -webkit-baseline-middle;"></i>
+                              {{else}}
+                                 <i class="mdi mdi-wifi-off" style="font-size:20px;max-height:20px;vertical-align: -webkit-baseline-middle;"></i>
+                              {{/if}}
+                            {{/if}}
+                          </a>
+                     </div>
+                     <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                         <div class="row">
+                           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                             <a href="/{{#if edit}}elementedit{{else}}element{{/if}}/{{#if subelem}}{{elementid}}/{{subgroupid}}/{{/if}}{{element.__id}}">
+                               <p class="text-center bigger"><b>{{element.meta.content.elements.__name }}</b></p>
+                             </a>
+                           </div>
+                           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                             <a href="/{{#if edit}}elementedit{{else}}element{{/if}}/{{#if subelem}}{{elementid}}/{{subgroupid}}/{{/if}}{{element.__id}}">
+                               <p class="text-center smalltitle"><b>Link State</b></p>
+                               <p class="text-center bigger">
+                                 {{#if element.online.value}}
+                                    <i class="mdi mdi-wifi" style="font-size:20px;max-height:20px;vertical-align: -webkit-baseline-middle;"></i> Online
+                                 {{else}}
+                                    <i class="mdi mdi-wifi-off" style="font-size:20px;max-height:20px;"></i> Offline
+                                 {{/if}}
+                               </p>
+                             </a>
+                           </div>
+                           {{#each infoelement in element.meta.content.secondaryInfo}}
+                           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                             <a href="/{{#if edit}}elementedit{{else}}element{{/if}}/{{#if subelem}}{{elementid}}/{{subgroupid}}/{{/if}}{{element.__id}}">
+                               <p class="text-center smalltitle"><b>{{getGroupPar element.groups infoelement.groupname infoelement.varname "__name"}}</b></p> <p class="text-center bigger">{{getGroupPar element.groups infoelement.groupname infoelement.varname "__current"}}</p>
+                             </a>
+                           </div>
+                           {{/each}}
+                         </div>
+                    </div>
+
+                </div>
+                {{#each contelement in element.meta.content.controls}}
+                     {{>listControls stat=(getGroupVar element.groups contelement.groupname contelement.varname)}}
+                {{/each}}
+
+                {{#if admin}}
+                  <div class="row controldiv">
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <p class="text-center smalltitle">
+                              <b>Enable</b>
+                            </p>
+                            <p class="text-center bigger">{{element.enable.value}}</p>
+                          </div>
+
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <form class="enableform"  style="display: inline-block">
+                              <label class="switch">
+                                {{#if evalBool element.enable.value}}<input name='element_enable' id='element_enable' type="checkbox" checked>
+                                {{else}}<input name='element_enable' id='element_enable' type="checkbox">
+                                {{/if}}
+                                <span class="toggleslider round"></span>
+                                </label>
+                                <input type="hidden" name="topic" value='{{element.enable.topic}}' />
+                                <input type="hidden" name="message" value='{{element.enable.value}} '/>
+                            </form>
+                          </div>
+                   </div>
+                {{/if}}
+                {{#if edit}}
+                      <div class="row nomargin">
+                        <div  class="caption elementbuttons">
+                          <a href="#" ><i id="editTeamMember" class="mdi mdi-pencil" style="color:black;">Edit</i></a>  <a href="#" ><i id="deleteTeamMember" class="mdi mdi-delete" style="color:black">Delete</i></a>
+                        </div>
+                      </div>
+                {{/if}}
+        </div>
+
+    </div>
+  </div>
+
+</template>

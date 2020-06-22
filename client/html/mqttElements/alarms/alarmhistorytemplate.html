@@ -1,0 +1,24 @@
+<template name="alarmhistorytemplate">
+    <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+     <div class="generalElementDiv">
+       <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+         <div class="content">
+            <div class="thumbnail zoomIn animated">
+              <div class="row">
+                <div class="panel-group elemform">
+                  <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 scroller">
+                      <div class="tab-content clearfix">
+                         <h4 class="alert-heading"> <i class="mdi mdi-checkbox-marked-circle"></i> Alarms History</h4>
+                          <div class="tab-pane active">
+                              {{>alarmhistory thisAlarmList=getAlarmHistoryById}}
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+       </div>
+     </div>
+     </div>
+    </div>
+</template>

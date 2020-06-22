@@ -1,0 +1,18 @@
+<template name="confsubmitbutton">
+  {{#if inprocess thiseval}}
+    {{#if thisedit}}
+        <button type="submit" class="btn btn-primary buttonload">
+          <i class="fa fa-cog fa-spin fa-lg fa-fw"></i> Processing Configuration </button>
+    {{else}}
+        <div  class="btn btn-primary buttonload">
+          <i class="fa fa-cog fa-spin fa-lg fa-fw"></i> Processing Configuration </div>
+    {{/if}}
+
+  {{else}}
+    {{#if thisedit}}
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-cog fa-lg fa-fw"></i> Save Configuration</button> 
+    {{/if}}
+
+  {{/if}}
+</template>

@@ -1,0 +1,79 @@
+<template name="branchElement">
+
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row nomargin">
+                  <div class="col-xs-6  col-sm-3  col-md-4  col-lg-4">
+                      <h4 class="panel-title">
+                              <a data-toggle="collapse" href="#childCollapse{{myelement._id}}">
+                                {{#each getLevel mylevel}}
+                                    &nbsp;
+                                {{/each}}
+                                {{#if mylevel}}
+                                    <i class="mdi mdi-sitemap"></i>
+                                {{else}}
+                                    <i class="mdi mdi-plus-network"></i>
+                                {{/if}}
+                                <i class="mdi mdi-chevron-right"></i>
+                                {{myelement.name}} {{myelement._id}}
+                                {{#if getChildsNum myelement._id}}
+                                <i class="mdi mdi-arrow-down-bold-circle" style="color:blue"></i>
+                                 ({{getChildsNum myelement._id}})
+                                {{/if}}
+                             </a>
+                      </h4>
+                   </div>
+                   {{#each element in getTreeElements myelement._id}}
+
+                                {{#each infoelement in element.meta.content.secondaryInfo}}
+                                <div class="col-xs-6  col-sm-3  col-md-2  col-lg-2">
+                                  <a href="/{{#if edit}}elementedit{{else}}element{{/if}}/{{#if subelem}}{{elementid}}/{{subgroupid}}/{{/if}}{{element.__id}}">
+                                    <b>{{getGroupPar element.groups infoelement.groupname infoelement.varname "__name"}}</b> - {{getGroupPar element.groups infoelement.groupname infoelement.varname "__current"}}
+                                  </a>
+                                </div>
+                                {{/each}}
+                                <div class="col-xs-6  col-sm-3  col-md-2  col-lg-2">
+                                    <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#childCollapse{{myelement._id}}">
+                                            {{#if element.online.value}}
+                                                <i class="mdi mdi-checkbox-blank-circle"  style="color:gray"></i>
+                                                <i class="mdi mdi-checkbox-blank-circle" style="color:rgb(50,255,50)"></i>
+                                                    Online
+                                            {{else}}
+                                                <i class="mdi mdi-checkbox-blank-circle" style="color:red"></i>
+                                                <i class="mdi mdi-checkbox-blank-circle" style="color:gray"></i>
+                                                  <span style="color:red">  Offline </span>
+                                            {{/if}}
+                                           </a>
+                                    </h4>
+                                 </div>
+                   {{else}}
+                         <div class="col-xs-6  col-sm-3  col-md-3  col-lg-3">
+                           MQTT object not started
+                         </div>
+                   {{/each}}
+
+
+                </div>
+
+              </div>
+          </div>
+          <div id="childCollapsechart{{myelement._id}}" class="panel-collapse collapse">
+                    <div class="row nomargin">
+                       {{>demochart thisId=myelement._id}}
+                    </div>
+              </div>
+              <div id="childCollapsechartGain{{myelement._id}}" class="panel-collapse collapse">
+                        <div class="row nomargin">
+                           {{>demochart2 thisId=myelement._id}}
+                        </div>
+                  </div>
+          <div id="childCollapse{{myelement._id}}" class="panel-collapse collapse">
+                    <div class="row nomargin">
+                      {{#each thiselement in getChilds myelement._id}}
+                          {{>branchElement myelement=thiselement mylevel=(addLevel mylevel)}}
+                      {{/each}}
+                    </div>
+              </div>
+
+</template>

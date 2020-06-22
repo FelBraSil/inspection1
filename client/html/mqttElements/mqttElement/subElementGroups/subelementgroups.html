@@ -1,0 +1,27 @@
+<template name="subelementgroups">
+  {{#each element in displayelement}}
+      {{#each elementgroup in element.resourcegroups}}
+          <div class="panel-group thumbnail elemform {{#if elementgroup.__alarm}}alarm{{/if}}">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">
+                              <a data-toggle="collapse" href="#collapse{{elementgroup.__id}}">
+                              <i class="mdi mdi-google-circles-group"></i>
+                                  {{getParamIf elementgroup.__name elementgroup.__id  }} ({{elementgroup.__quantity}})
+                             </a>
+                      </h4>
+                  </div>
+              </div>
+              <div id="collapse{{elementgroup.__id}}" class="panel-collapse collapse">
+                <div class="panel-body">
+                        <div class="row nomargin"> 
+                          {{>displayMqttListTemplate displayelements=elementgroup.element subelem=true elementid=element.__id subgroupid=elementgroup.__id  }}
+                        </div>
+                      </div>
+                  </div>
+          </div>
+      {{/each}}
+  {{/each}}
+
+
+</template>

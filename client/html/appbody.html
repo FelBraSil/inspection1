@@ -1,0 +1,25 @@
+<template name="appbody">
+  {{#if $not currentUser}}
+      {{>fixedbackground}}
+      {{>login}}
+  {{else}}
+      {{#if dissabledUser}}
+          {{>upperbar}}
+          {{>accountalert}}
+      {{else}} 
+          {{>fixedbackground}}
+          {{>floatmenu}}
+          {{>upperbar}}
+         <div class="row h-100">
+           {{>navbar}}
+           {{#if Template.subscriptionsReady }}
+            {{> yield}}
+           {{/if}}
+
+         </div>
+         {{>modal}}
+         {{>bottombar}}
+      {{/if}}
+  {{/if}}
+  {{> meteorStatus}}
+</template>

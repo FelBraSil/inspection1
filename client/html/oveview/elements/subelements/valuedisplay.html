@@ -1,0 +1,20 @@
+<template name="valuedisplay">
+  <form class="valueform">
+    <div class="elemsize subelement">
+            <i class={{type}}></i> <small>{{name}} {{#unless discrete}} [ {{unit}} ]{{/unless}} </small>
+            <div class="valuediv">
+                {{#if discrete}}
+                    <p class="elementDataBig">{{value}} </p>
+                {{else}}
+                      <input  class="anob"  data-width="120"  data-fgColor="#dddddd"
+                                                              data-bgcolor="rgba(0,0,0,0.2)"
+                                                              data-angleOffset=-125
+                                                              data-angleArc=250
+                                                              data-rotation=clockwise
+                                                              data-type={{type}}
+                                                              value="{{value}}">
+                {{/if}}
+             </div>
+    </div>
+  </form>
+</template>

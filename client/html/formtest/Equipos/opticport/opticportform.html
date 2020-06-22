@@ -1,0 +1,41 @@
+<template name="opticportform">
+      <div class="thumbnail zoomIn animated">
+
+         <div class="row nomargin">
+           <a data-toggle="collapse" href="#collapseOptic{{portnum}}Edit">
+                  <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                        <a href="#"><img class="thumbnailimg" style="width:100%" src="/img/repetidor.svg" alt="image" /></a>
+                   </div>
+                   <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                       <div class="row">
+                         <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                           <a href="#">
+                             <p class="text-center bigger"><b>Agregar Nuevo</b></p>
+                           </a>
+                         </div>
+                         <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                           <a href="#">
+                             <p class="text-center smalltitle"><b>Numero Sitio</b></p> <p class="text-center bigger">--</p>
+                           </a>
+                         </div>
+                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <a href="#">
+                             <p class="text-center smalltitle"><b>IP/Puerto</b></p> <p class="text-center bigger">--:--</p>
+                           </a>
+                         </div>
+                       </div>
+                  </div>
+
+                  </div>
+                  </a>
+             <div class="row">
+               <div id='collapseOptic{{portnum}}Edit' class="panel-collapse collapse">
+                   <div class="panel-body">
+                     {{>quickForm collection=formCollection id="opticeditform" type="insert"}}
+                  </div>
+               </div>
+            </div>
+          </div>
+      </div>
+</template>

@@ -1,0 +1,35 @@
+<template name="mbclass">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 " style="padding:5px">
+
+    <div class="thumbnail zoomIn animated" >
+       <div class="row nomargin">
+                <div class="row">
+                      <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                          <a class="centeredText" href="/config/modbusclass/{{element._id}}">
+                              <i class="mdi mdi-server-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                          </a>
+                     </div>
+                     <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                         <div class="row">
+                           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                             <a href="/config/modbusclass/{{element._id}}">
+                               <p class="text-center bigger"><b>{{element.name }}</b></p>
+                             </a>
+                           </div>
+                           <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                             <a href="/config/modbusclass/{{element._id}}">
+                               <p class="text-center smalltitle"><b>Detalles</b></p> <p class="text-center bigger">{{element.details}}</p>
+                             </a>
+                           </div>
+                         </div>
+                    </div>
+                </div>
+                {{>editbuttons element=element}}
+        </div>
+
+    </div>
+  </div>
+
+
+
+</template>

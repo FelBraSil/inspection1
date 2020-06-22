@@ -1,0 +1,32 @@
+<template name="minimalMqttObject">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  " style="padding:5px">
+
+    <div class="zoomIn animated {{element.ui.thumbnailclass}} {{#if element.__alarm}}alarm{{/if}}" >
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="node title dashboard">Node: {{ element.__name }} </p>
+            <p class="node data dashboard">Topic: placeholder </p>
+          </div>
+
+          {{#each variable in element.variables}}
+                {{#if variable.__system}}
+                {{else}}
+                    <div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4 pt-4">
+                      <div class="mininode nodecontainer align-middle centeredText">
+                          <i class="far fa-lightbulb mininode"></i>
+                          <div class="mininode name">{{variable.$name}}</div>
+                          <div class="mininode value">{{variable.value}} {{variable.unit}}</div>
+                      </div>
+                    </div>
+                {{/if}}
+          {{else}}
+                  
+          {{/each}}
+        </div>
+        <hr>
+    </div>
+
+  </div>
+
+</template>

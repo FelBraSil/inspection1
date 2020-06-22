@@ -1,0 +1,27 @@
+<template name="opticportbox">
+
+  <div class="panel-group thumbnail elemform">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse{{title}}">
+                      <i class="mdi mdi-view-dashboard"></i>
+                          Puerto Óptico {{title}} ({{opticportnumber}})
+                     </a>
+              </h4>
+
+          </div>
+      </div>
+      <div id="collapse{{title}}" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row nomargin">
+
+          {{#each localelement in thisformCollection}}
+              {{>opticport thisid=thisid name=nombre thislocalelement=localelement}}
+          {{/each}}
+                </div>
+              </div>
+          </div>
+  </div>
+
+</template>

@@ -1,0 +1,41 @@
+<template name="ministat">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="ministat maindiv">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6">
+
+                    {{#if evalParam statelement.$type "humidity" }}
+
+                        <i class="mdi mdi-water-percent ministat"></i>
+
+                    {{else}} {{#if evalParam statelement.$type "light" }}
+
+                        <i class="mdi mdi-white-balance-incandescent ministat"></i>
+
+                    {{else}} {{#if evalParam statelement.$type "contact" }}
+
+                        <i class="mdi mdi-rotate-right-variant ministat"></i>
+
+                    {{else}} {{#if evalParam statelement.$type "relay" }}
+
+                        <i class="mdi mdi-power ministat"></i>
+
+                    {{else}} {{#if evalParam statelement.$type "temperature" }}
+
+                        <i class="mdi mdi-thermometer ministat"></i>
+
+                    {{else}}
+
+                        <i class="mdi mdi-mdi-speedometer ministat"></i>
+
+                    {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
+
+                    {{statelement.$name}}
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
+                        <div class="ministat innerdiv"> {{statelement.value}} {{statelement.unit}}</div>
+                </div>
+            </div>
+        </div>
+     </div>
+</template>

@@ -1,0 +1,37 @@
+{
+  "name": "symbiot_3_0",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.10.2",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "bcrypt": "^3.0.6",
+    "bootstrap-slider": "^10.6.2",
+    "bootstrap-switch": "^3.4.0",
+    "chart.js": "^2.8.0",
+    "coffeescript": "^2.3.2",
+    "css-toggle-switch": "^4.1.0",
+    "downloadjs": "^1.4.7",
+    "highcharts": "^7.2.1",
+    "highcharts-export-csv": "^1.4.8",
+    "jquery-knob": "^1.2.11",
+    "jquery-ui-touch-punch": "^0.2.3",
+    "material-design-icons": "^3.0.1",
+    "message-box": "^0.2.2",
+    "meteor-node-stubs": "~0.2.0",
+    "moment": "^2.26.0",
+    "panzoom": "^8.1.1",
+    "popper.js": "^1.15.0",
+    "rangeslider-js": "^3.2.5",
+    "reactive-var": "^1.0.7",
+    "simpl-schema": "^1.7.3",
+    "templating": "^1.0.1",
+    "underscore": "^1.9.1"
+  }
+}

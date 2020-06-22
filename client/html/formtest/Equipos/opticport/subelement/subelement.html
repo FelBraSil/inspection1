@@ -1,0 +1,166 @@
+<template name="subelement">
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+   <div class="generalElementDiv ">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+       <div class="roundBack">
+         <a class="navbar-brand brandlink" id='backAction' href="#" data-action=back><i class="mdi mdi-arrow-left"></i></a>
+       </div>
+
+       <div class="content">
+         <div class="row">
+
+           <div class="col-xs-12  col-sm-8  col-md-9  col-lg-9">
+             <div class="row">
+                 <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+                   <div class="panel-group elemform" >
+                       <div class="">
+                           <div class="thumbnail">
+                             <div id="exTab3" class="">
+                               <ul  class="nav nav-pills">
+                                     <li class="active">
+                                       <a  href="#1b" data-toggle="tab">Info. Dispositivo</a>
+                                     </li>
+                                     <li><a href="#2b" data-toggle="tab">Conf.de Red</a>
+                                     </li>
+                                     <li><a href="#3b" data-toggle="tab">Param. Trabajo</a>
+                                     </li>
+                                     <li><a href="#4b" data-toggle="tab">Alarmas</a>
+                                     </li>
+                                     <li><a href="#5b" data-toggle="tab">Límites</a>
+                                     </li>
+                                     <li><a href="#6b" data-toggle="tab">Configuración RF</a>
+                                     </li>
+                                   </ul>
+                                     <div class="tab-content clearfix">
+                                       <div class="tab-pane active" id="1b">
+                                         {{>quickForm collection=formCollection id="wholeform" doc=displayelement type="update" scope="opticport1" }}
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Tipo de Dispositivo" stat=displayelement.Settings.deviceinfo.devicetype }}
+                                             {{>statselement title="Modelo" stat=displayelement.Settings.deviceinfo.devicemodel}}
+                                             {{>statselement title="Serial" stat=displayelement.Settings.deviceinfo.deviceserial}}
+                                             {{>statselement title="Número de Canal" stat=displayelement.Settings.deviceinfo.channelnum}}
+                                             {{>statselement title="Ver. Software" stat=displayelement.Settings.deviceinfo.swversion}}
+                                             {{>statselement title="Número Esclavo" stat=displayelement.Settings.deviceinfo.slavenum}}
+                                           </tbody>
+                                         </table>
+                                       </div>
+                                       <div class="tab-pane" id="2b">
+                                         {{#autoForm collection=formCollection id="networkpars" doc=displayelement type="update" }}
+                                         <fieldset>
+                                           {{>confsubmitbutton thisedit=thisedit thiseval=displayelement.Settings.networkpar_set.set}}
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Número Sitio" stat=displayelement.Settings.networkpar.sitenumber thisedit=thisedit  setfieldname='Settings.networkpar_set.sitenumber'}}
+                                             {{>statselement title="Número Subdispositivo" stat=displayelement.Settings.networkpar.subdevicenum thisedit=thisedit  setfieldname='Settings.networkpar_set.subdevicenum'}}
+                                             {{>statselement title="IP Centro Monitoreo" stat=displayelement.Settings.networkpar.mcipaddress thisedit=thisedit  setfieldname='Settings.networkpar_set.mcipaddress'}}
+                                             {{>statselement title="Puerto Centro Monitoreo" stat=displayelement.Settings.networkpar.mcipport thisedit=thisedit  setfieldname='Settings.networkpar_set.mcipport'}}
+                                             {{>statselement title="Protocolo PS" stat=displayelement.Settings.networkpar.psprotocol thisedit=thisedit  setfieldname='Settings.networkpar_set.psprotocol'}}
+                                             {{>statselement title="IP Repetidor" stat=displayelement.Settings.networkpar.repeaterip thisedit=thisedit  setfieldname='Settings.networkpar_set.repeaterip'}}
+                                             {{>statselement title="Puerto Repetidor" stat=displayelement.Settings.networkpar.repeateripport thisedit=thisedit  setfieldname='Settings.networkpar_set.repeateripport'}}
+                                             {{>statselement title="Mascara Red Repetidor" stat=displayelement.Settings.networkpar.repeatermask thisedit=thisedit  setfieldname='Settings.networkpar_set.repeatermask'}}
+                                             {{>statselement title="GateWay Repetidor" stat=displayelement.Settings.networkpar.repeatergw thisedit=thisedit  setfieldname='Settings.networkpar_set.repeatergw'}}
+                                             {{>statselement title="MAC Repetidor" stat=displayelement.Settings.networkpar.macaddress thisedit=thisedit  setfieldname='Settings.networkpar_set.macaddress'}}
+                                             {{>statselement title="Estilo Comm." stat=displayelement.Settings.networkpar.comstyle thisedit=thisedit  setfieldname='Settings.networkpar_set.comstyle'}}
+                                             {{> afQuickField label=false type='hidden' name='Settings.networkpar_set.set' value=1 }}
+                                           </tbody>
+                                         </table>
+                                       </fieldset>
+
+
+                                     {{/autoForm}}
+                                       </div>
+                                       <div class="tab-pane" id="3b">
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Potencia Entrada DownLink [dBm]" stat=displayelement.Settings.workingpar.downlinkinpow}}
+                                             {{>statselement title="Potencia Salida UpLink [dBm]" stat=displayelement.Settings.workingpar.uplinkoutpow}}
+                                           </tbody>
+                                         </table>
+                                       </div>
+                                       <div class="tab-pane" id="4b">
+
+                                         {{#autoForm collection=formCollection id="alarmpars" doc=displayelement type="update" }}
+                                         <fieldset>
+                                           {{>confsubmitbutton thisedit=thisedit thiseval=displayelement.Settings.alarmpar_set.set}}
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Poder de Entrada" stat=displayelement.Settings.alarmpar.supplypower stat2=displayelement.Settings.alarmstate.supplypower bool="1" setstate="1" thisedit=thisedit  setfieldname='Settings.alarmpar_set.supplypower'}}
+                                             {{>statselement title="Link Maestro-Esclavo" stat=displayelement.Settings.alarmpar.masterslavelink stat2=displayelement.Settings.alarmstate.masterslavelink bool="1" setstate="1" thisedit=thisedit  setfieldname='Settings.alarmpar_set.masterslavelink'}}
+                                             {{>statselement title="Poder Entrada DownLink Sobre Límite" stat=displayelement.Settings.alarmpar.downlinkover stat2=displayelement.Settings.alarmstate.downlinkover bool="1" setstate="1" thisedit=thisedit  setfieldname='Settings.alarmpar_set.downlinkover'}}
+                                             {{>statselement title="Poder Entrada DownLink Bajo Límite" stat=displayelement.Settings.alarmpar.downlinklow stat2=displayelement.Settings.alarmstate.downlinklow bool="1" setstate="1" thisedit=thisedit  setfieldname='Settings.alarmpar_set.downlinklow'}}
+
+                                           </tbody>
+                                         </table>
+                                         {{> afQuickField label=false type='hidden' name='Settings.alarmpar_set.set' value=1 }}
+                                         </fieldset>
+
+                                         {{/autoForm}}
+                                       </div>
+                                       <div class="tab-pane" id="5b">
+                                         {{#autoForm collection=formCollection id="limitpar" doc=displayelement type="update" }}
+                                         <fieldset>
+                                           {{>confsubmitbutton thisedit=thisedit thiseval=displayelement.Settings.limitpar_set.set}}
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Poder Entrada DownLink Mínimo [dBm]" stat=displayelement.Settings.limitpar.dlinputlmin setstate="1" thisedit=thisedit  setfieldname='Settings.limitpar_set.dlinputlmin'}}
+                                             {{>statselement title="Poder Entrada DownLink Máximo [dBm]" stat=displayelement.Settings.limitpar.dlinputlmax setstate="1" thisedit=thisedit  setfieldname='Settings.limitpar_set.dlinputlmax'}}
+                                             {{>statselement title="Retardo de Alarma [seg]" stat=displayelement.Settings.limitpar.alarmdelay setstate="1" thisedit=thisedit  setfieldname='Settings.limitpar_set.alarmdelay'}}
+                                           </tbody>
+                                         </table>
+                                         {{> afQuickField label=false type='hidden' name='Settings.limitpar_set.set' value=1 }}
+                                         </fieldset>
+                                         {{/autoForm}}
+                                       </div>
+                                       <div class="tab-pane" id="6b">
+                                         {{#autoForm collection=formCollection id="settingpar" doc=displayelement type="update" }}
+                                         <fieldset>
+                                           {{>confsubmitbutton thisedit=thisedit thiseval=displayelement.Settings.settingpar_set.set}}
+                                         <table class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                           <tbody>
+                                             {{>statselement title="Switch de Poder RF" stat=displayelement.Settings.settingpar.rfpowerswitch setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.rfpowerswitch'}}
+                                             {{>statselement title="Frecuencia CH1 [MHz]" stat=displayelement.Settings.settingpar.ch1freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch1freq'}}
+                                             {{>statselement title="Frecuencia CH2 [MHz]" stat=displayelement.Settings.settingpar.ch2freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch2freq'}}
+                                             {{>statselement title="Frecuencia CH3 [MHz]" stat=displayelement.Settings.settingpar.ch3freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch3freq'}}
+                                             {{>statselement title="Frecuencia CH4 [MHz]" stat=displayelement.Settings.settingpar.ch4freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch4freq'}}
+                                             {{>statselement title="Frecuencia CH5 [MHz]" stat=displayelement.Settings.settingpar.ch5freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch5freq'}}
+                                             {{>statselement title="Frecuencia CH6 [MHz]" stat=displayelement.Settings.settingpar.ch6freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch6freq'}}
+                                             {{>statselement title="Frecuencia CH7 [MHz]" stat=displayelement.Settings.settingpar.ch7freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch7freq'}}
+                                             {{>statselement title="Frecuencia CH8 [MHz]" stat=displayelement.Settings.settingpar.ch8freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch8freq'}}
+                                             {{>statselement title="Frecuencia CH9 [MHz]" stat=displayelement.Settings.settingpar.ch9freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch9freq'}}
+                                             {{>statselement title="Frecuencia CH10 [MHz]" stat=displayelement.Settings.settingpar.ch10freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch10freq'}}
+                                             {{>statselement title="Frecuencia CH11 [MHz]" stat=displayelement.Settings.settingpar.ch11freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch11freq'}}
+                                             {{>statselement title="Frecuencia CH12 [MHz]" stat=displayelement.Settings.settingpar.ch12freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch12freq'}}
+                                             {{>statselement title="Frecuencia CH13 [MHz]" stat=displayelement.Settings.settingpar.ch13freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch13freq'}}
+                                             {{>statselement title="Frecuencia CH14 [MHz]" stat=displayelement.Settings.settingpar.ch14freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch14freq'}}
+                                             {{>statselement title="Frecuencia CH15 [MHz]" stat=displayelement.Settings.settingpar.ch15freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch15freq'}}
+                                             {{>statselement title="Frecuencia CH16 [MHz]" stat=displayelement.Settings.settingpar.ch16freq setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.ch16freq'}}
+                                             {{>statselement title="UpLink ATT [dB]" stat=displayelement.Settings.settingpar.uplinkatt setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.uplinkatt'}}
+                                             {{>statselement title="DownLink ATT [dB]" stat=displayelement.Settings.settingpar.downlinkatt setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.downlinkatt'}}
+                                             {{>statselement title="Channel Switch" stat=displayelement.Settings.settingpar.channelswitch setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.channelswitch'}}
+                                             {{>statselement title="Seleccion de Modo de Trabajo" stat=displayelement.Settings.settingpar.choicemode setstate="1" thisedit=thisedit  setfieldname='Settings.settingpar_set.choicemode'}}
+                                           </tbody>
+                                         </table>
+                                         {{> afQuickField label=false type='hidden' name='Settings.settingpar_set.set' value=1 }}
+                                         </fieldset>
+                                         {{/autoForm}}
+                                       </div>
+                                     </div>
+                             </div>
+                           </div>
+                        </div>
+                      </div>
+                 </div>
+             </div>
+
+           </div>
+
+         </div>
+
+     </div>
+   </div>
+
+   </div>
+ </div>
+  test {{current_id }} {{current_index}}
+</template>

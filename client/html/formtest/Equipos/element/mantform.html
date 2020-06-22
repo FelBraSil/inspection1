@@ -1,0 +1,22 @@
+<template name="mantenimiento_c">
+  <div class="panel-group elemform">
+      <div class="panel panel-default">
+        {{#with dispo}}
+          <div class="panel-heading">
+              <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapse1">
+                      <i class="mdi mdi-view-dashboard"></i>
+                      Nuevo Mantenimiento
+                  </a>
+              </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+                  {{> quickForm collection=mantCollection id="insertMantForm" type="insert"}}
+              </div>
+          </div>
+          {{/with}}
+      </div>
+  </div>
+
+</template>

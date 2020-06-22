@@ -1,0 +1,55 @@
+<template name="ampForm">
+  <div class="panel-group elemform">
+        <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                      <a data-toggle="collapse" href="#collapse0">
+                                      <i class="mdi mdi-view-dashboard"></i>
+                                          Address config
+                                     </a>
+                              </h4>
+                          </div>
+                      </div>
+          <div id="collapse0" class="panel-collapse collapse">
+              <div class="panel-body">
+                <form id="updateAddress" >
+                {{#each getAmpAddress}}
+                   Min Address <input type="number" value="{{min}}" id="minnum" name="minnum">
+                   Max Address <input type="number" id="maxnum" name="maxnum" value="{{max}}">
+                   <button type="button" class="controldiv marginleft maxminaddress" name="maxminaddress" id="setAmpAddress" >
+                     <i class="mdi mdi-export" style="color:white;">Set</i>
+                   </button>
+                {{/each}}
+                </form>
+              </div>
+          </div>
+  </div>
+  <div class="panel-group elemform">
+        <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                      <a data-toggle="collapse" href="#collapse1">
+                                      <i class="mdi mdi-view-dashboard"></i>
+                                          + Add Device
+                                     </a>
+                              </h4>
+                          </div>
+                      </div>
+          <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+
+
+                      {{#autoForm collection=ampCollection id="insertAmpItem" type="insert"}}
+                       {{> afQuickField name='devicename' }}
+                       {{> afQuickField name="branch" options=branchList}}
+                       {{> afQuickField name="parent" options=ampList}}
+                       {{> afQuickField name='address' }}
+                       {{> afQuickField name='product' }}
+                       {{> afQuickField name='details' }}
+                       <input type="submit" value="Submit">
+                      {{/autoForm}}
+
+              </div>
+          </div>
+  </div>
+</template>

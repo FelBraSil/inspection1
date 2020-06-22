@@ -1,0 +1,31 @@
+<template name="floatmenu">
+        <div class=" nopad  floatmenu whitelinks" id="floatmenu" aria-expanded="true"  >
+          <div class="content forcenoedge">
+            <div class="row h-full ">
+              <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 appfloat h-fill scroller">
+                <a class="floaticon" href="#" onclick="closefloatmenu()"><img alt="Brand" src="/img/favicon_complete.svg" class="brandicon-side center"></a>
+                <ul class="navbarlist-black openfont">
+                  {{>navlist}}
+                </ul>
+              </div>
+              <div class="col-xs-4  col-sm-6 col-md-8  col-lg-10 h-full" onclick="closefloatmenu()">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+            function closefloatmenu(){
+              document.getElementById("floatmenu").style.marginLeft = "-1000px";
+              document.getElementById("floatmenu").style.width = "0px";
+            }
+
+            function closefloatmenuZ(){
+              document.getElementById("floatmenu").style.marginLeft = "-1000px";
+              document.getElementById("floatmenu").style.width = "0px";
+              zoomFactor=0;
+            }
+
+
+        </script>
+</template>

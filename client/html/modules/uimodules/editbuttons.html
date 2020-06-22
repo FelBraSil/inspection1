@@ -1,0 +1,10 @@
+<template name="editbuttons">
+  <div class="row nomargin ">
+    <div  class="caption elementbuttons">
+      <a  id="edit" href="#" class="controldiv"><i class="mdi mdi-pencil" style="color:white;">Edit</i></a>
+      <a href="#" id="delete"  class="controldiv marginleft"><i class="mdi mdi-delete" style="color:white">
+        {{#if element.dontShowThis}}Show{{else}}Delete{{/if}}
+      </i></a>
+    </div>
+  </div>
+</template>

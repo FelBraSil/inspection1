@@ -1,0 +1,77 @@
+<template name="navlist">
+  <span class="whitelinks" >
+          <li style="font-size:2em"><b>Sistema {{getSystem}}</b></li>
+          <li role="separator" class="divider list-border"></li>
+          <li>
+            <a href="/equipos" onclick="closefloatmenu()" >
+              <i class="mdi mdi-format-list-bulleted-type devicesIcon" ></i>
+              DASHBOARD
+            </a>
+          </li>
+
+          <li>
+            <a href="/systemmap" onclick="closefloatmenuZ()" >
+              <i class="mdi mdi-map mapIcon" ></i>
+               Map
+            </a>
+          </li>
+
+          {{#if evalSystem "AMOS"}}
+
+          {{else}}
+
+                  <li>
+                    <a href="/alarms" onclick="closefloatmenu()" >
+                      <i class="mdi mdi-alert " ></i>
+                      ACTIVE ALARMS {{#if setAlarmVarValue }}
+                                                <span class="badge badge-warning badge-pill">{{setAlarmVarValueNum}}</span>
+                                                <i class="mdi mdi-wifi-off" style="font-size:20px;max-height:20px;vertical-align: -webkit-baseline-middle;"></i>
+                                                <span class="badge badge-warning badge-pill">{{offlineAlarmQ}}</span>
+                                      {{/if}}
+                    </a>
+                  </li>
+
+
+                  {{#if evalSystem "AMP"}}
+                  <li>
+                    <a href="/branchlist" onclick="closefloatmenuZ()" >
+                      <i class="mdi mdi-sitemap " ></i>
+                       Branch List
+                    </a>
+                  </li>
+                  {{/if}}
+                  <li>
+                    <a href="/pollinglist" onclick="closefloatmenu()" >
+                      <i class="mdi mdi-poll-box " ></i>
+                        POLLING DEVICES
+                    </a>
+                  </li>
+                  {{#if evalSystem "DRS"}}
+                      <li>
+                        <a href="/devconfig" onclick="closefloatmenu()" >
+                          <i class="mdi mdi-poll-box " ></i>
+                            DEVICE CONFIGS
+                        </a>
+                      </li>
+                  {{/if}}
+
+          {{/if}}
+
+
+          <li role="separator" class="divider list-border"></li>
+          <li>
+           <img class="userprofile" src="/dbresources/img/img_avatar.png" alt="Avatar"> {{firstName}} {{lastName}}
+          </li>
+          <li><a onclick="closefloatmenu()" href="/profile"><i class="mdi mdi-account profileIcon" ></i> PROFILE</a></li>
+          <li><a onclick="closefloatmenu()" href="/config"><i class="mdi mdi-settings configIcon" ></i> CONFIGURATION</a></li>
+          <li role="separator" class="divider list-border"></li>
+          <li><a onclick="closefloatmenu()" href="/about"><i class="mdi mdi-information aboutIcon" ></i> ABOUT</a></li>
+          <li><a onclick="closefloatmenu()" href="#" class="logoutaction"><i class="mdi mdi-logout logoutIcon" ></i> LOGOUT</a></li>
+          <script>
+              function closefloatmenu(){
+                document.getElementById("floatmenu").style.marginLeft = "-1000px";
+                document.getElementById("floatmenu").style.width = "0px";
+              }
+          </script>
+  </span>
+</template>

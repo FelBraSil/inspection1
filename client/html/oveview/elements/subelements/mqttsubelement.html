@@ -1,0 +1,19 @@
+<template name="mqttsubelement">
+  {{#if display}}
+
+      {{#unless stats}}
+        <div class='col-xs-12 col-sm-6 col-md-4 col-lg-2 align-middle h-100   ' >
+              {{#if actuator}}
+                           {{#if discrete}}
+                                {{>relayform}}
+                           {{else}}
+                                {{>dimmerform}}
+                           {{/if}}
+              {{else}}
+                           {{>valuedisplay}}
+              {{/if}}
+          </div>
+      {{/unless}}
+
+  {{/if}}
+</template>

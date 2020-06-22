@@ -1,0 +1,43 @@
+<template name="displayElementNE">
+  <div class="row" style="padding-left:10px">
+      {{#each team}}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 " style="padding:5px">
+          <div class="thumbnail zoomIn animated">
+
+             <div class="row nomargin">
+                      <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                            <a href="element/{{_id}}"><img class="thumbnailimg" style="width:100%" src="/img/repetidor.svg" alt="image" /></a>
+                       </div>
+                       <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                           <div class="row">
+                             <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                               <a href="element/{{_id}}">
+                                 <p class="text-center bigger"><b>{{nombre}}</b></p>
+                               </a>
+                             </div>
+                             <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                               <a href="element/{{_id}}">
+                                 <p class="text-center smalltitle"><b>Numero Sitio</b></p> <p class="text-center bigger">{{Settings.networkpar.sitenumber}}</p>
+                               </a>
+                             </div>
+                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                               <a href="element/{{_id}}">
+                                 <p class="text-center smalltitle"><b>IP/Puerto</b></p> <p class="text-center bigger">{{Settings.networkpar.repeaterip}}:{{Settings.networkpar.repeateripport}}</p>
+                               </a>
+                             </div>
+                           </div>
+                      </div>
+
+                      </div>
+                      <div class="row nomargin"> 
+                      </div>
+              </div>
+
+          </div>
+      </div>
+      {{/each}}
+      <div class="col-md-6"></div>
+  </div>
+
+</template>

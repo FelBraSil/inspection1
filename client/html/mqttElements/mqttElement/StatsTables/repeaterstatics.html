@@ -1,0 +1,88 @@
+<template name="repeaterstatics">
+  {{#each displayelement}}
+    <div class="panel-group elemform" >
+        <div class="">
+            <div class="black">
+                <h4 class="panel-title">
+                      <div class="row">
+                        {{#if subelement}}
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                              <p class="text-center">
+                                <i class="mdi mdi-plus-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                              </p>
+                              <p class="text-center smalltitle pad10"><b>Name</b></p>
+                              <p class="text-center" style="font-size:30px;display:;">{{meta.content.elements.__name}}</p>
+                              <p class="text-center smalltitle pad10"><b>Sub Resource ID</b></p>
+                              <p class="text-center" style="font-size:30px;display:;">{{substats.current_subrel_id}}</p>
+                              <p class="text-center smalltitle pad10"><b>Resource ID</b></p>
+                              <p class="text-center bigger">{{substats.current_id}}</p>
+                              <p class="text-center smalltitle pad10"><b>Interface</b></p>
+                              <p class="text-center bigger">{{substats.current_subr_id}}</p>
+                            </div>
+                        {{else}}
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                              <p class="text-center">
+                                {{#if evalParam meta.content.type "networkDevice"}}
+                                      <i class="mdi mdi-server-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                                {{else}}
+                                    {{#if evalParam meta.content.type "ampDevice"}}
+                                        <img src="/img/amp.svg" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;">
+                                    {{else}}
+                                          <i class="mdi mdi-server-network" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                                    {{/if}}
+                                {{/if}}
+                              </p>
+                              <p class="text-center" style="font-size:30px;display:;">{{meta.content.elements.__name  }}</p>
+                            </div>
+                        {{/if}}
+
+                        {{#if subelement}}
+
+                        {{else}}
+                          {{#if evalSystem "DRS"}}
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <a href="#">
+                                  <p class="text-center smalltitle pad10"><b>Site Number</b></p> <p class="text-center bigger">{{getGroupPar groups "NetworkParam" "siteNumber" "__current"}}</p>
+                                </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <a href="#">
+                                  <p class="text-center smalltitle pad10"><b>IP/Port</b></p> <p class="text-center bigger">{{getGroupPar groups "NetworkParam" "repeaterIpAddress" "__current" }}:{{getGroupPar groups "NetworkParam" "repeaterIpPort" "__current"}}</p>
+                                </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <a href="#">
+                                  <p class="text-center smalltitle pad10"><b>Slave Devices</b></p> <p class="text-center bigger">{{__quantity}}</p>
+                                </a>
+                              </div>
+                          {{else}}
+                              {{#if evalSystem "DOLF"}}
+                                  {{#each infoelement in meta.content.secondaryInfo}}
+                                      <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                          <p class="text-center smalltitle"><b>{{getGroupPar groups infoelement.groupname infoelement.varname "__name"}}</b></p>
+                                          <p class="text-center bigger">{{getGroupPar groups infoelement.groupname infoelement.varname "__current"}}</p>
+                                      </div>
+                                  {{/each}}
+                              {{/if}}
+                          {{/if}}
+                        {{/if}}
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <a href="#">
+                              <p class="text-center smalltitle pad10"><b>Details</b></p> <p class="text-center bigger">{{getParamText meta.content.elements.__details "--"}}</p>
+                            </a>
+                            {{#if subelement}}
+
+                            {{else}}
+                               {{#if evalSystem "DRS"}}
+                                <button type="button" id="downloadMasterConf" name="downloadMasterConf" class="btn btn-primary downloadMasterConf"> <i class="mdi mdi-cloud-download"></i> Download Configuration</button>
+                                {{/if}}
+                            {{/if}}
+                          </div>
+                      </div>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+  {{/each}}
+</template>

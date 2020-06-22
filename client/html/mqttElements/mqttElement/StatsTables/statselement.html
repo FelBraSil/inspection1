@@ -1,0 +1,225 @@
+<template name="statselement">
+  <div class="row downborder">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <p style="font-size:0.9em"><b>{{getParamIf stat.__name stat.__id}}</b></p>
+    </div>
+      {{setCurrentText}}
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+      {{#if evalParam stat.__class "alarm" }}
+          <p style="font-size:1.2em"><b>
+
+            {{#if evalBool stat.__current}}
+              <div  class="label label-success " style="background:rgba(10,50,10,07) !important">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Activado
+              </div>
+
+                {{#if evalBool stat.__value}}
+                    <div  class="label label-danger alarm" style="background:rgba(150,10,10,0.7)!important">
+                     <i class="mdi mdi-close"></i> <a class="whitelinks" Title="Ver Histórico" style="text-decoration: none !important; width:auto;" href="/alarmhistory/{{stat.__valdbid}}/">Alarm!</a>
+                    </div>
+                {{else}}
+                    <div  class="label label-success " style="background:rgba(10,100,10,0.7)!important">
+                    <i class="mdi mdi-check"></i> <a class="whitelinks"  Title="Ver Histórico" style="text-decoration: none !important; width:auto;" href="/alarmhistory/{{stat.__valdbid}}/">No Alarms </a>
+                    </div>
+                {{/if}}
+
+            {{else}}
+              <div  class="label label-default " style="background:rgba(10,10,10,0.7)!important">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Deactivated
+              </div>
+            {{/if}}
+          </b></p>
+      {{else}}
+          {{#if evalParam stat.__class "boolean" }}
+              {{#if evalBool stat.__current}}
+                <div  class="label label-success " style="background:rgba(10,50,10,07) !important">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Activated
+                </div>
+              {{else}}
+                <div  class="label label-default " style="background:rgba(10,10,10,0.7)!important">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Deactivated
+                </div>
+              {{/if}}
+          {{else}}
+              {{#if evalParam stat.__class "number" }}
+                {{#if paramExists stat.__options}}
+                    {{#if evalParam stat.__options.type "select"}}
+                              {{#each optoinelement in stat.__options.elements}}
+                                  {{#if evalParam optoinelement.value stat.__current }}
+                                    <p style="font-size:1.2em"><b>{{optoinelement.label}} {{getParam stat.__unit}} </b></p>
+                                  {{else}}
+                                  {{/if}}
+                              {{/each}}
+                    {{else}}
+                        {{#if evalParam stat.__options.type "multi"}}
+                          {{#if evalParam stat.__current "0" }}
+                              <p>No Setup</p>
+                          {{else}}
+                              {{#each optoinelement in stat.__options.elements}}
+                                  {{#if evalMulti optoinelement.value @index stat.__current }}
+                                    <p>{{optoinelement.label}}</p>
+                                  {{else}}
+                                  {{/if}}
+                              {{/each}}
+                          {{/if}}
+
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    <p style="font-size:1.2em"><b> {{getParam stat.__current}} {{getParam stat.__unit}}</b></p>
+                {{/if}}
+              {{else}}
+                  {{#if evalParam stat.__class "slider" }}
+                     <p style="font-size:1.2em"><b> {{getParam stat.__current}} {{getParam stat.__unit}}</b></p>
+                  {{else}}
+                  {{#if evalParam stat.__class "graph" }}
+                     <p style="font-size:1.2em"><b> {{getParam stat.__current}} {{getParam stat.__unit}}</b>
+
+                           {{#if evalSystem "DRS"}}
+                                 <a href="/elementg/{{objectid}}/var/{{stat.__dbidt}}" type="submit" title="Open History Chart" class="btn btn-primary buttoninside">
+                                    <i class="fas fa-chart-area"></i></a>
+                           {{else}}
+                                {{#if evalSystem "DOLF"}}
+                                    <a href="/elementg/{{objectid}}/var/{{stat.__dbidt}}/vid/{{stat.__dbid}}" type="submit" title="Open History Chart" class="btn btn-primary buttoninside">
+                                        <i class="fas fa-chart-area"></i></a>
+                                {{else}}
+                                  {{#if evalSystem "AMP"}}
+                                        <a href="/elementg/{{objectid}}/var/{{stat.__dbidt}}" type="submit" title="Open History Chart" class="btn btn-primary buttoninside">
+                                            <i class="fas fa-chart-area"></i></a>
+                                  {{/if}}
+                                {{/if}}
+                           {{/if}}
+
+                     </p>
+                  {{else}}
+                       <p style="font-size:1.2em"><b> {{getParam stat.__current}} {{getParam stat.__unit}}</b></p>
+                  {{/if}}
+                  {{/if}}
+              {{/if}}
+          {{/if}}
+        {{/if}}
+        </div>
+        {{#if sysuser}}
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+              {{#if setExists}}
+                    {{#if evalParam stat.__class "alarm" }}
+                        <p style="font-size:1.2em"><b>
+                          <form class="toggleform" style="display: inline-block">
+                            <label class="switch">
+                              {{#if evalBool stat.__set}}<input name='{{stat.__id}}_set' id='{{stat.__id}}_set' type="checkbox" checked>
+                              {{else}}<input name='{{stat.__id}}_set' id='{{stat.__id}}_set' type="checkbox">
+                              {{/if}}
+                              <span class="toggleslider round"></span>
+                              </label>
+                              <input type="hidden" name="topic" value={{stat.__topic}} />
+                              <input type="hidden" name="message" value={{stat.__set}} />
+                          </form>
+                        </b></p>
+                    {{else}}
+                        {{#if evalParam stat.__class "boolean" }}
+
+                              <form class="toggleform"  style="display: inline-block">
+                                <label class="switch">
+                                  {{#if evalBool stat.__set}}<input name='{{stat.__id}}_set' id='{{stat.__id}}_set' type="checkbox" checked>
+                                  {{else}}<input name='{{stat.__id}}_set' id='{{stat.__id}}_set' type="checkbox">
+                                  {{/if}}
+                                  <span class="toggleslider round"></span>
+                                  </label>
+                                  <input type="hidden" name="topic" value='{{stat.__topic}}' />
+                                  <input type="hidden" name="message" value='{{stat.__set}} '/>
+                              </form>
+
+
+                        {{else}}
+                            {{#if evalParam stat.__class "number" }}
+                               <b>
+                                 <form class="numberform" style="display: flex;">
+                                   {{#if evalParam stat.__options.type "multi"}}
+                                   {{else}}
+                                   {{#if evalNum stat.__set stat.__current }}
+                                       <button type="submit" title="Set" class="btn btn-primary buttoninside">
+                                         <i class="fa fa-cog fa-lg fa-fw"></i>
+                                       </button>
+                                   {{else}}
+                                       <button type="submit" title="En proceso" class="btn btn-primary buttonload buttoninside">
+                                       <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+                                       </button>
+                                   {{/if}}
+                                   {{/if}}
+                                   {{#if paramExists stat.__options}}
+                                        {{#if evalParam stat.__options.type "select"}}
+                                              <select name='setvalue' id='{{stat.__id}}_set' class="configform insidebutton">
+                                                {{#each optoinelement in stat.__options.elements}}
+                                                      <option value='{{optoinelement.value}}'>{{optoinelement.label}}</option>
+                                                {{/each}}
+                                              </select>
+                                              <input type="hidden" name="typeval" value='select' />
+                                        {{else}}
+                                            {{#if evalParam stat.__options.type "multi"}}
+                                            <div style="display: block">
+                                                {{#each optoinelement in stat.__options.elements}}
+
+                                                <label class="switch">
+                                                      {{#if evalMulti optoinelement.value @index stat.__set }}
+                                                        <input type='checkbox' name='setvalue'  value='{{optoinelement.value}}' checked>
+                                                      {{else}}
+                                                        <input type='checkbox' name='setvalue'  value='{{optoinelement.value}}'>
+                                                      {{/if}}
+                                                  <span class="toggleslider round"></span>
+                                                  </label>
+
+                                                  {{optoinelement.label}}<br>
+                                                {{/each}}
+                                                <input type="hidden" name="typeval" value='multi' />
+                                                </div>
+                                            {{else}}
+
+                                            {{/if}}
+
+                                        {{/if}}
+                                   {{else}}
+                                      <input name='setvalue' id='{{stat.__id}}_set' value='{{stat.__set}}' type='number' class="insidebutton">
+                                      <input type="hidden" name="typeval" value='static' />
+                                   {{/if}}
+
+                                   <input type="hidden" name="topic" value={{stat.__topic}} />
+                                   <input type="hidden" name="message" value={{stat.__set}} />
+
+
+                                 </form>
+                                </b>
+                            {{else}}
+                                {{#if evalParam stat.__class "slider" }}
+                                   <p style="font-size:1.2em"><b>
+                                     <form class="dimmerForm" style="display: inline-block">
+                                     <input class="slider" name='dimRange' value='{{stat.__set}}' id='{{stat.__id}}_set' type="range" min=0 max=100/>
+                                     <input type="hidden" name="topic" value={{stat.__topic}} />
+                                     <input type="hidden" name="message" value={{stat.__set}} />
+                                    </form>
+                                   </b></p>
+                                {{else}}
+
+                                <p style="font-size:1.2em"><b>
+                                  <form class="textform" style="display:flex">
+                                    {{#if evalParam stat.__set stat.__current }}
+                                        <button type="submit" title="Set" class="btn btn-primary buttoninside">
+                                          <i class="fa fa-cog fa-lg fa-fw"></i>  </button>
+                                    {{else}}
+                                        <button type="submit" title="En proceso" class="btn btn-primary buttonload buttoninside">
+                                        <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+                                        </button>
+                                    {{/if}}
+                                    <input name='setvalue' id='{{stat.__id}}_set' value='{{stat.__set}}' type='text' class="insidebutton">
+                                    <input type="hidden" name="topic" value={{stat.__topic}} />
+                                    <input type="hidden" name="message" value={{stat.__set}} />
+                                  </form>
+                                 </b></p>
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                {{/if}}
+            {{/if}}
+          </div>
+        {{/if}}
+    </div>
+</template>

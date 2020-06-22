@@ -1,0 +1,52 @@
+<template name="floatingAlert">
+  {{#if setAlarmVarValue}}
+  <div class="row ">
+    <div id="floatingAlert" class="{{#if setAlarmVarValue}}shake animated{{else}}fadeIn animated{{/if}} alert alert-danger col-xs-9  col-sm-9  col-md-7  col-lg-7 " role="alert" style="position:absolute !important;bottom:10px;right:10px;z-index:100;">
+      <div id="alarmTitle" style="display:none">
+        Received Alerts
+      </div>
+      <div id="alarmcontent">
+        {{>alarmlist shortpaths=true}}
+      </div>
+    </div>
+    <div id="floatingAlertButton" class="{{#if setAlarmVarValue}}shake animated{{else}}fadeIn animated{{/if}} alert alert-danger col-xs-2  col-sm-2  col-md-1  col-lg-1 " role="alert" style="position:absolute !important;bottom:10px;right:10px;z-index:100;">
+      {{#if setAlarmVarValue}}
+        <i class="mdi mdi-alert"></i> Alerts
+      {{/if}}
+      <button type="button" class="close"  aria-label="Close" onclick="addFloatingClass()">
+        <span aria-hidden="true"><i class="mdi  mdi-swap-vertical " ></i></span>
+      </button>
+    </div>
+  </div>
+
+
+  <script>
+      function addFloatingClass(){
+          //var element = document.getElementById("alarmcontent");
+          //element.classList.add("slideOutRight");
+              $( "#alarmcontent" ).toggle();
+              $( "#alarmTitle" ).toggle();
+              $( "#floatingAlert" ).toggle();
+      }
+  </script>
+  {{/if}}
+
+
+ {{#if backEndStatus}}
+     <div id="criticalAlert" class="fadeIn animated obscurediv">
+       <button type="button" class="close "  aria-label="Close" onclick="closeClass()">
+         <span class="hideCriticalButton" aria-hidden="true">&times;</span>
+       </button>
+       <div id="serveralert" class="centered-element" >
+           <p><b><i class="mdi mdi-alert bigicon"></i><span style="color:red">CRITICAL STATUS: Back-End OFFLINE  </span></b></p>
+           <p style="font-size:10px">Waiting for back-end to reconect</p>
+       </div>
+     </div>
+     <script>
+         function closeClass(){
+             var element = document.getElementById("criticalAlert");
+             element.classList.add("hidden");
+         }
+     </script>
+ {{/if}}
+</template>

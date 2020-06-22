@@ -1,0 +1,56 @@
+<template name="objectCard">
+     <div class="objectCard maindiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <div class="objectCard parentdiv row ">
+           <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   <i class="fas fa-circle fa-home"></i> {{element.__name}}
+                   <i class="mdi objectCard staticon {{#if element.online.value }} mdi-wifi {{else}} mdi-wifi-off {{/if}}" title="{{#if element.online.value }} Connected to broker {{else}} offline {{/if}}"></i>
+                    <div class=" objectCard dropdown whitelinks">
+                      <button class="objectCard btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="mdi mdi-format-list-bulleted-type"></i> Stats
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="objectCard dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                        {{#each stat in element.variables}}
+                              {{#if  stat.__system }}
+                                {{#with  stat.value }}
+                                   <li><a href="#">
+                                     <b>
+                                    {{#with  stat.name }} {{stat.name}} {{else}} {{stat.__id}} {{/with}}
+                                    </b>
+                                        : {{stat.value}}
+                                    </a>
+                                   </li>
+                                {{/with}}
+                              {{/if}}
+                        {{/each}}
+                      </ul>
+                    </div>
+           </div>
+       </div>
+        <div class="objectCard parentdiv row ">
+            <div class="objectCard statsdiv col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="row">
+                      {{#each stat in element.variables}}
+                          {{#if  stat.$settable }}
+                          {{else}}
+                            {{#if  stat.__system }}
+                            {{else}}
+                                {{>ministat statelement=stat}}
+                            {{/if}}
+                          {{/if}}
+                      {{/each}}
+                    </div>
+            </div>
+            <div class="objectCard statsdiv col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="row">
+                      {{#each node in element.variables}}
+                          {{#if  node.$settable }}
+                              {{>mininode nodeelement=node online=element.online.value}}
+                          {{else}}
+                          {{/if}}
+                      {{/each}}
+                    </div>
+            </div>
+        </div>
+     </div>
+</template>

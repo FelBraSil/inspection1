@@ -1,0 +1,15 @@
+<template name="pollinglist">
+  {{#if evalSystem "DOLF"}}
+         {{>dolfpollinglist formCollectionM=formCollectionM classop=classOptions}}
+  {{else}}
+          {{#if evalSystem "DRS"}}
+                 {{>drspollinglist formCollectionD=formCollectionD}}
+          {{else}}
+                  {{#if evalSystem "AMP"}}
+                         {{> ampForm}}
+                  {{else}}
+
+                  {{/if}}
+          {{/if}}
+  {{/if}}
+</template>

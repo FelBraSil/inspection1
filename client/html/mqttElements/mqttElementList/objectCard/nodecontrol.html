@@ -1,0 +1,108 @@
+
+<template name="nodecontrol">
+
+    <div
+
+    class='{{#if evalParam controlelement.$type "slider" }}
+                        col-xs-12 col-sm-12 col-md-12 col-lg-12
+           {{else}} {{#if evalParam controlelement.$type "dimmer" }}
+                        col-xs-12 col-sm-12 col-md-12 col-lg-12
+           {{else}}
+                       col-xs-6 col-sm-6 col-md-6 col-lg-6
+           {{/if}}{{/if}}'
+    >
+        {{controlelement.value}} {{controlelement.unit}}
+    </div>
+
+  {{#if evalParam controlelement.$type "relay" }}
+
+       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <form class="toggleform"  style="display: inline-block">
+              <label class="switch">
+                <input name='_set' type="checkbox" checked="{{#if evalParam controlelement.value 'on'}}true{{/if}}">
+                <span class="toggleslider round"></span>
+              </label>
+              <input type="hidden" name="topic" value={{controlelement.__topic}} />
+              <input type="hidden" name="message" value='{{#if evalParam controlelement.value "on"}}on{{else}}off{{/if}}'/>
+          </form>
+       </div>
+
+  {{/if}}
+  {{#if evalParam controlelement.$type "light" }}
+
+       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <form class="toggleform"  style="display: inline-block">
+              <label class="switch">
+                <input name='_set' type="checkbox" checked="{{#if evalParam controlelement.value 'on'}}true{{/if}}">
+                <span class="toggleslider round"></span>
+              </label>
+              <input type="hidden" name="topic" value={{controlelement.__topic}} />
+              <input type="hidden" name="message" value='{{#if evalParam controlelement.value "on"}}on{{else}}off{{/if}}'/>
+          </form>
+       </div>
+
+  {{/if}}
+  {{#if evalParam controlelement.$type "slider" }}
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 sliderdiv">
+           <form class="dimmerForm" style="display: inline-block">
+           <input name='dimRange' class="newslider" value='{{controlelement.value}}' id='{{controlelement.__id}}_set' type="range" step=1 min=0 max=100/>
+           <input type="hidden" name="topic" value={{controlelement.__topic}} />
+           <input type="hidden" name="message" value={{controlelement.set}} />
+          </form>
+     </div>
+
+  {{/if}}
+  {{#if evalParam controlelement.$type "dimmer" }}
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 sliderdiv">
+           <form class="dimmerForm" style="display: inline-block">
+           <input name='dimRange' class="newslider" value='{{controlelement.value}}' id='{{controlelement.__id}}_set' type="range" step=1 min=0 max=100/>
+           <input type="hidden" name="topic" value={{controlelement.__topic}} />
+           <input type="hidden" name="message" value={{controlelement.set}} />
+          </form>
+     </div>
+
+  {{/if}}
+  {{#if evalParam controlelement.$type "number" }}
+
+     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+       <form class="numberform" style="display: flex;">
+         {{#if evalNum controlelement.set controlelement.value }}
+             <button type="submit" title="Set" class="btn btn-primary buttoninside">
+               <i class="fa fa-cog fa-lg fa-fw"></i>
+             </button>
+         {{else}}
+             <button type="submit" title="En proceso" class="btn btn-primary buttonload buttoninside">
+             <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+             </button>
+         {{/if}}
+            <input name='setvalue' id='{{controlelement.__id}}_set' value='{{controlelement.set}}' type='number' class="insidebutton">
+            <input type="hidden" name="typeval" value='static' />
+             <input type="hidden" name="topic" value={{controlelement.__topic}} />
+             <input type="hidden" name="message" value={{controlelement.set}} />
+       </form>
+    </div>
+
+  {{/if}}
+  {{#if evalParam controlelement.$type "text" }}
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <form class="textform" style="display:flex">
+          {{#if evalParam controlelement.set controlelement.value }}
+              <button type="submit" title="Set" class="btn btn-primary buttoninside">
+                <i class="fa fa-cog fa-lg fa-fw"></i>  </button>
+          {{else}}
+              <button type="submit" title="En proceso" class="btn btn-primary buttonload buttoninside">
+              <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+              </button>
+          {{/if}}
+          <input name='setvalue' id='{{controlelement.__id}}_set' value='{{controlelement.set}}' type='text' class="insidebutton">
+          <input type="hidden" name="topic" value={{controlelement.__topic}} />
+          <input type="hidden" name="message" value={{controlelement.set}} />
+        </form>
+     </div>
+
+  {{/if}}
+
+</template>

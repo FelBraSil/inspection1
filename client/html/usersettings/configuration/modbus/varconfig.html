@@ -1,0 +1,42 @@
+<template name="varconfig">
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+   <div class="generalElementDiv">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+       <div class="roundBack">
+         <a class="navbar-brand brandlink" id='backAction' href="#" data-action=back><i class="mdi mdi-arrow-left"></i></a>
+       </div>
+       <div class="content">
+
+         <div class="row formdiv" >
+            {{#autoForm id="afUpdateDemo" type="update" collection=modbusVars doc=modbusVar autosave=false}}
+            {{> afQuickField name="tag"}}
+            {{> afQuickField name="name"}}
+            {{> afQuickField name="modbusdataaddress"}}
+            {{> afQuickField name="type"}}
+            {{> afQuickField name="meassureunit"}}
+            {{> afQuickField name="defaultval"}}
+            {{> afQuickField name="onFront"}}
+            {{> afQuickField name="toLog"}}
+            {{> afQuickField name="alarm"}}
+            {{#if afFieldValueIs name="alarm" value="true"}}
+              {{> afQuickField name="normalmax"}}
+              {{> afQuickField name="normalmin"}}
+            {{/if}}
+            {{> afQuickField name="readonly"}}
+            {{> afQuickField name="formulak"}}
+            {{> afQuickField name="formulaA"}}
+            {{> afQuickField name="formulaN"}}
+            {{> afQuickField name="details"}}
+            {{#unless autoSaveMode}}
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+                    <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
+                  </div>
+            {{/unless}}
+            {{/autoForm}}
+         </div>
+     </div>
+   </div>
+   </div>
+ </div>
+</template>

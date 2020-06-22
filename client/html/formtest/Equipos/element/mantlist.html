@@ -1,0 +1,46 @@
+<template name="mantlist">
+   <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 nopad">
+
+        <div class="content">
+          <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapseMants">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            Ver Mantenimientos
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseMants" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      {{#each displaymant}}
+                          <div class="thumbnail nopad">
+                            <div class="panel-group elemform">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                                <i class="mdi mdi-view-dashboard"></i>
+                                                    {{inicio}}
+                                        </h4>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" elemform" style="padding-left:10px">
+                              <p>Observaciones: {{details}}</p>
+                            </div>
+
+                          </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+
+
+      </div>
+    </div>
+</div>
+</template>

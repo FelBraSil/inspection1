@@ -1,0 +1,13 @@
+
+:root {
+  --main-highlight-color: #FAF9F7;
+  --main-bg-color: #000000;
+  --main-title-color: #191c24;
+  --main-text-color: #E8E6E1;
+  --sec-bg-color: #16302a;
+  --sec-title-color: #625D52;
+  --sec-text-color: #646c8f;
+  --main-element-color: #16302a;
+  --sec-element-color: #bf7f00;
+  --gradient-element: linear-gradient(to left, #d41459, #911a6c);
+}

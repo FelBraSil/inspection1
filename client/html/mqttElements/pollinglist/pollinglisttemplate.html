@@ -1,0 +1,28 @@
+<template name="pollinglisttemplate">
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100 nomargin">
+   <div class="generalElementDiv">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill nopad nomargin">
+       <div class="content" >
+         <div class="thumbnail zoomIn animated">
+              {{>pollinglist}}
+         </div>
+         <div class="row" style="padding-left:10px">
+           {{#if evalSystem "DOLF"}}
+             {{>dolfpollinglistt }}
+           {{else}}
+             {{#if evalSystem "DRS"}}
+               {{>drspollinglistt}}
+             {{else}}
+                 {{#if evalSystem "Amp"}}
+                   {{>amplist}}
+                 {{else}}
+
+                 {{/if}}
+             {{/if}}
+           {{/if}}
+     </div>
+   </div>
+   </div>
+  </div>
+  </div>
+</template>

@@ -1,0 +1,38 @@
+<template name="alarmmodule">
+    <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+     <div class="generalElementDiv">
+       <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+         <div class="content">
+            <div class="thumbnail zoomIn animated">
+              <div class="row">
+                <div class="panel-group elemform">
+                  <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 scroller">
+                      <div class="tab-content clearfix">
+                          <div class="tab-pane active">
+                              {{>alarmlist}}
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="thumbnail zoomIn animated">
+              <div class="row">
+                <div class="panel-group elemform">
+                  <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 scroller">
+                      <div class="tab-content clearfix">
+                         <h4 class="alert-heading"> <i class="mdi mdi-checkbox-marked-circle"></i> Historico de Alarmas</h4>
+                          <div class="tab-pane active"> 
+                              {{>alarmhistory thisAlarmList=getAlarmHistory}}
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+       </div>
+     </div>
+     </div>
+    </div>
+</template>

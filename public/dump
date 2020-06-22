@@ -1,0 +1,55 @@
+
+<div class="row">
+  <div class=" text-center graphicdivtitle col-xs-12  col-sm-12  col-md-12  col-lg-12">
+    <div class=" graphicdivtitle col-xs-12  col-sm-12  col-md-12  col-lg-12">
+      10 ultimas mediciones en tiempo real
+    </div>
+  </div>
+</div>
+<div class="row graphicdivtitle">
+  <div class=" text-center col-xs-12  col-sm-12  col-md-12  col-lg-12">
+    <div class="graphicdivtitle  col-xs-4  col-sm-4  col-md-4  col-lg-4">Tiempo</div>
+    <div class="graphicdivtitle  col-xs-4  col-sm-4  col-md-4  col-lg-4">Valor</div>
+    <div class="graphicdivtitle  col-xs-4  col-sm-4  col-md-4  col-lg-4">Unidad</div>
+  </div>
+  {{#each getAllVar}}
+     <div class=" text-center  col-xs-12  col-sm-12  col-md-12  col-lg-12">
+       <div class="graphicdiv  col-xs-4  col-sm-4  col-md-4  col-lg-4">{{toDate createdAt}}</div>
+       <div class="graphicdiv  col-xs-4  col-sm-4  col-md-4  col-lg-4">{{value}}</div>
+       <div class="graphicdiv  col-xs-4  col-sm-4  col-md-4  col-lg-4">{{getUnit}}</div>
+     </div>
+  {{else}}
+  <div class=" text-center  col-xs-12  col-sm-12  col-md-12  col-lg-12">got none</div>
+  {{/each}}
+</div>
+
+
+
+db.rtphistory.aggregate(
+  {$match: {topicId: "yXNz7p2cif4H4ktgz"}},
+  {$project: {value: 1, _id: 1, createdAt:1, created: {$subtract: [{$divide: ["$createdAt", 1000]}, {$mod: [{$divide: ["$createdAt", 1000]}, 1]}]}}},
+  {$group: {
+    _id: "$createdAt",
+    value: {$first: "$value"},
+    createdAt: {$first: "$createdAt"},
+    }
+  },
+  {$sort: {"createdAt": 1}}
+)
+
+
+db.data.aggregate(
+  {$match: {$and: [{graph_id: gid}, {"x.value": {$gt: start, $lt: stop}}]}},
+  {$project: {x: 1, y: 1, series: 1, chunk: {$subtract: [{$divide: ["$x.value", step]}, {$mod: [{$divide: ["$x.value", step]}, 1]}]}}},
+  {$group: {
+    _id: {
+      chunk: "$chunk",
+      series: "$series"
+    },
+    series: {$first: "$series"},
+    x: {$first: "$x"},
+    y: {$first: "$y"},
+    }
+  },
+  {$sort: {"x.value": 1}}
+)

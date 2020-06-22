@@ -1,0 +1,21 @@
+
+<template  name="mqttelement">
+  <div class=' row' >
+    <div class="placerow">
+      <div class="elemplace">
+          <p> <i class="mdi mdi-map-marker">  </i> {{location}} </p>
+      </div>
+         {{#each element}}
+              <div class='row norightmargin elem'>
+                                      {{>elementtitle}}
+                                      {{>subelementrow}}
+
+              </div>
+              <div class="row">
+                <div class="divisorline"></div>
+              </div>
+         {{/each}}
+      </div>
+
+   </div>
+</template>

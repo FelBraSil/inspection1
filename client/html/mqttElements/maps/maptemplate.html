@@ -1,0 +1,146 @@
+<template name="maptemplate">
+  <div class="mapbox h100" id="mymapbox" >
+
+    <div class="m_tools col-xs-6 col-sm-4 col-md-3 col-lg-2" >
+
+
+
+      <div class="  " style="padding:5px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="z-index:1001;">
+          <p>
+            <a class="btn btn-default" data-toggle="collapse" href="#collapseMapSelector" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="mdi mdi-map "></i> Map Slector
+            </a>
+          </p>
+          <div class="collapse formdiv" id="collapseMapSelector">
+            <div class="card card-body">
+              <div class="btn-group-vertical btn-block">
+
+                <div class="btn-group dropright">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                   Map List <span class="caret"></span></button>
+                  <ul class="dropdown-menu" role="menu">
+                    {{#each getMapList}}
+                            <li>
+                              <a class="btn btn-primary btn-block whitelinks" href="/systemmap/{{_id}}" > {{nombre}} </a>
+                            </li>
+                    {{else}}
+                            <li>
+                              <a name="editSelector" class="btn btn-primary btn-block whitelinks" href="/systemmap/" > Default Map </a>
+                            </li>
+                    {{/each}}
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+          {{#if admin}}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="z-index:1000;">
+              <p>
+                <a class="btn btn-default" data-toggle="collapse" href="#collapseEdit" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <i class="fa fa-edit"></i> Edit Tools
+                </a>
+              </p>
+              <div class="collapse formdiv" id="collapseEdit">
+                <div class="card card-body">
+
+                  <label for="maptoolbox">Map Management</label>
+                  <div class="btn-group-vertical btn-block" id="maptoolbox">
+                    <a class="btn btn-primary"   href="/mapmanager/"   aria-expanded="false" aria-controls="collapseExample">
+                    Open Map Man.
+                    </a>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <label for="maptoolbox">Element Tools</label>
+                  <div class="btn-group-vertical btn-block">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                       Move/Place <span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu">
+                        {{#each displayMqttList}}
+                            {{#if enable.value}}
+                                <li>
+                                  <button name="editSelector" class="btn btn-primary btn-block" value="{{meta.content.elements.__id}}" > {{meta.content.elements.__name}} </button>
+                                </li>
+                            {{/if}}
+                        {{else}}
+                          <p>No elements</p>
+                        {{/each}}
+                      </ul>
+                    </div>
+
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                       Remove <span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu">
+                        {{#each displayMqttList}}
+                            {{#if enable.value}}
+                                <li>
+                                  <button name="deleteSelector" class="btn btn-primary btn-block" value="{{meta.content.elements.__id}}" > {{meta.content.elements.__name}} </button>
+                                </li>
+                            {{/if}}
+                        {{else}}
+                          <p>No elements</p>
+                        {{/each}}
+                      </ul>
+                    </div>
+
+                  </div>
+                  <button id="cancelEdit" class="btn btn-primary btn-block" style="display:none">Cancel Move</button>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
+              <p>
+                <a class="btn btn-default" data-toggle="collapse" href="#collapseElements" role="button" aria-expanded="false" aria-controls="collapseExample">
+                   <i class="fa fa-list-alt"></i>  Element List
+                </a>
+              </p>
+              <div class="collapse" id="collapseElements">
+                <div class="card card-body">
+                  {{#each getMapElements this.thisMapId}}
+                      {{#if enable.value}}
+                          <button class="btn btn-primary btn-block" name="elementButton" id="{{meta.content.elements.__id}}"> {{meta.content.elements.__name}} </button>
+                      {{/if}}
+                  {{else}}
+                    <p>No elements</p>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+
+      </div>
+    </div>
+
+
+
+
+        <div id="draggablediv" class="map h-fill">
+              <div id="zooming" name="zooming" >
+
+                  <img class="resize" src="{{getThisMap this.thisMapId}}" id="map">
+                  {{resetMap}}
+                  {{#each getMapElements this.thisMapId}}
+                    {{#if enable.value}}
+                      <div class="m_elementx {{#if online}}{{#if alarm}} m_elementx-alarm {{else}} m_elementx-online  {{/if}}{{else}} m_elementx-offline  {{/if}}" id="test_togletableb{{meta.content.elements.__id}}" style="top:{{getCoord map.mapy}}px; left:{{getCoord map.mapx}}px;" >
+                          <i class="mdi mdi-map-marker-radius mapicon"></i>
+                          <div class="mapFloatInfo ">
+                              {{>minimalMqttObject element=this subelem=false wide=true}}
+                          </div>
+                          <div class="mapFloatInfo-extra speech-bubble ">
+                              {{#if online}} <i class="mdi mdi-wifi"></i>  {{else}} <i class="mdi mdi-wifi-off"></i> {{/if}}
+                              {{#if alarm}} <i class="mdi mdi-alert "></i>{{else}} {{/if}}
+                          </div>
+                      </div>
+                    {{/if}}
+                  {{/each}}
+
+              </div>
+        </div>
+  </div>
+</template>

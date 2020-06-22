@@ -1,0 +1,32 @@
+<template name="dolfpollinglist">
+  <div class="panel-group elemform">
+        <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                      <a data-toggle="collapse" href="#collapse1">
+                                      <i class="mdi mdi-view-dashboard"></i>
+                                          + Add Device
+                                     </a>
+                              </h4>
+                          </div>
+                      </div>
+          <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+
+
+                      {{#autoForm collection=formCollectionM id="insertTeamFormSpecial" type="insert"}}
+                       {{> afQuickField name='devicetag' }}
+                       {{> afQuickField name='devicename' }}
+                       {{> afQuickField name="classd" options=classOptions}}
+                       {{> afQuickField name='mbaddress' }}
+                       {{> afQuickField name='ip' }}
+                       {{> afQuickField name='port' }}
+                       {{> afQuickField name='details' }}
+
+                       <input type="submit" value="Submit">
+                      {{/autoForm}}
+
+              </div>
+          </div>
+  </div>
+</template>

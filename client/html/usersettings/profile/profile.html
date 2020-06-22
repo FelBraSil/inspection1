@@ -1,0 +1,54 @@
+<template name="profile">
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+   <div class="generalElementDiv">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+       <div class="roundBack">
+         <a class="navbar-brand brandlink" id='backAction' href="#" data-action=back><i class="mdi mdi-arrow-left"></i></a>
+       </div>
+       <div class="content">
+         <div class="row" style="padding-left:10px">
+             {{#each uniqueuser}}
+                 <div class="thumbnail zoomIn animated" >
+                    <div class="row nomargin">
+                             <div class="row">
+                                   <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                                       <a class="centeredText"  href="#">
+                                           <i class="mdi mdi-account-box" style="font-size:75px;max-height:100px;vertical-align: -webkit-baseline-middle;"></i>
+                                       </a>
+                                  </div>
+                                  <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                                      <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                          <a  href="#">
+                                            <p class="text-center bigger"><b>{{profile.firstName}} {{profile.lastName}}</b></p>
+                                          </a>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                          <a  href="#">
+                                            <p class="text-center smalltitle"><b>Username</b></p> <p class="text-center bigger">{{username}}</p>
+                                          </a>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                          <a  href="#">
+                                            <p class="text-center smalltitle"><b>Rol</b></p> <p class="text-center bigger">{{getRol _id}}</p>
+                                          </a>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                          <a  href="#">
+                                            <p class="text-center smalltitle"><b>Created</b></p> <p class="text-center bigger">{{dateFormat}}</p>
+                                          </a>
+                                        </div>
+                                      </div>
+                                 </div>
+                             </div>
+                     </div>
+                 </div>
+             {{/each}}
+             <div class="col-md-6"></div>
+         </div>
+     </div>
+   </div>
+   </div>
+ </div>
+
+</template>

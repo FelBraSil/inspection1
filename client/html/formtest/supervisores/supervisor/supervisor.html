@@ -1,0 +1,110 @@
+<template name="supervisor">
+   <div class="col-xs-12  col-sm-12  col-md-10  col-lg-10 nopad">
+    <div class="generalElementDiv ">
+      <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+        <div class="roundBack">
+          <a class="navbar-brand brandlink" id='backAction' href="#" data-action=back><i class="mdi mdi-arrow-left"></i></a>
+        </div>
+
+        <div class="content">
+          <div class="row">
+
+            <div class="col-xs-12  col-sm-8  col-md-6  col-lg-6">
+              <div class="panel-group elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      {{displayEjercicio.nombre}} {{displayEjercicio.apellidop}}
+                          </h4>
+
+                      </div>
+                      <img class="matchwidth" src="{{fullImageFile displayEjercicio.picture}}" alt="image" />
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12  col-sm-4  col-md-6  col-lg-6">
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      Nombre
+                          </h4>
+
+                      </div>
+                  </div>
+                  <p style="color:black">{{displayEjercicio.nombre}} {{displayEjercicio.nombre2}} {{displayEjercicio.apellidop}} {{displayEjercicio.apellidom}}</p>
+              </div>
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      Rut
+                          </h4>
+
+                      </div>
+                  </div>
+                  <p style="color:black">{{displayEjercicio.idn}}</p>
+              </div>
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      E-mail
+                          </h4>
+
+                      </div>
+                  </div>
+                  <p style="color:black">{{displayEjercicio.email}}</p>
+              </div>
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      Telefono Contacto
+                          </h4>
+                      </div>
+                  </div>
+                  <p style="color:black">{{displayEjercicio.phone}}</p>
+              </div>
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      Detalles
+                          </h4>
+
+                      </div>
+                  </div>
+                  <p style="color:black">{{displayEjercicio.details}}</p>
+              </div>
+              <div class="panel-group thumbnail elemform">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                                  <i class="mdi mdi-view-dashboard"></i>
+                                      Lugar
+                          </h4>
+
+                      </div>
+                  </div>
+                  {{>map2}}
+              </div>
+
+
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+
+    </div>
+  </div>
+</template>

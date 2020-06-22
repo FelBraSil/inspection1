@@ -1,0 +1,21 @@
+<template name="elementtitle">
+  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 h-100  ">
+    <span class="dropup">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <div class="elemsize elementrow">
+                  {{#if online}}
+                        <i class="mdi mdi-wifi bigIcon"></i>
+                  {{else}}
+                        <i class="mdi mdi-wifi-off bigIcon"></i>
+                  {{/if}}
+                  <p class="card-category"><b>{{name}}</b> {{#if online}} Online {{/if}}{{#unless online}} Offline {{/unless}}</p>
+              </div>
+            </a>
+            <ul class="dropdown-menu zind">
+              {{#each variables}}
+                {{#if stats}} <li>{{name}} : {{value}} </li> {{/if}}
+              {{/each}}
+            </ul>
+    </span>
+  </div>
+</template>

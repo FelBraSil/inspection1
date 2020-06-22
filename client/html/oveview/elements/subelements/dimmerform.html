@@ -1,0 +1,11 @@
+<template name="dimmerform">
+  <form class="dimmerForm">
+    <div class="elemsize subelement">
+      <label for=dimRange><i class='{{type}}'>  </i> <small> {{name}} : {{value}} {{unit}}</small>
+      <div class="ripple-container"></div></label>
+      <div class="dimmcontainer"><input type="range" min="0" max={{states}} value={{value}}  class="slider " name="dimRange" id="dimRange"></div>
+        <input type="hidden" name="topic" value={{topic}} />
+        <input type="hidden" name="message" value={{value}} />
+     </div>
+   </form>
+</template>

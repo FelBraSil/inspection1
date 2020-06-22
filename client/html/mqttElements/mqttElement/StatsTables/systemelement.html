@@ -1,0 +1,51 @@
+<template name="systemelement">
+  <div class="tab-pane " id="system">
+    <form class="metaform" style="display:flex">
+    <div class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+      <div class="row downborder">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <p style="font-size:0.9em"><b>Id</b></p>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+          <p style="font-size:1.2em"><b style="display:flex">
+
+              <input name='setvalue' id='id' value='{{element.meta.content.elements.__id}}' type='text' class="insidebutton" readonly>
+              <div type="submit" title="No Editable" class="btn btn-primary buttoninside">
+                <i class="fa fa-angle-left"></i> ?  </div>
+
+           </b></p>
+            </div>
+        </div>
+      <div class="row downborder">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <p style="font-size:0.9em"><b>Name</b></p>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+          <p style="font-size:1.2em; display:flex"><b style="display:flex">
+              <input name='setvalue' id='name_set' value='{{element.meta.content.elements.__name}}' type='text' class="insidebutton">
+              <div type="submit" title="Nombre del equipo" class="btn btn-primary buttoninside">
+                <i class="fa fa-angle-left"></i> ? </div>
+           </b></p>
+            </div>
+        </div>
+        <div class="row downborder">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <p style="font-size:0.9em"><b>Details</b></p>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <p style="font-size:1.2em"><b style="display:inline-flex">
+                <textarea class="insidebutton" style="color:#428bca" name="details" id='details' rows="10" cols="30">{{element.meta.content.elements.__details}}</textarea>
+                <div type="submit" title="Detalles sobre el equipo" class="btn btn-primary buttoninside">
+                  <i class="fa fa-angle-left"></i> ? </div>
+             </b></p>
+              </div>
+          </div>
+       <div class="row downborder">
+         <input type="hidden" name="topic" id="topic" value="{{element.meta.topic}}" />
+         <button type="submit" title="Set" class="btn btn-primary ">
+         <i class="fa fa-cog fa-lg fa-fw"></i>  Set Parameters</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</template>

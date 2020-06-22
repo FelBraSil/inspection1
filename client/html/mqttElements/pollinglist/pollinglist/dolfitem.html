@@ -1,0 +1,24 @@
+<template name="dolfitem">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12"> 
+       <div class="content">
+
+         <div class="row formdiv" >
+            {{#autoForm id=docname type="update" collection=formCollectionM doc=thisItem autosave=false}}
+            {{> afQuickField name="devicename"}}
+            {{> afQuickField name="devicetag"}}
+            {{> afQuickField name="classd" options=classOptions}}
+            {{> afQuickField name="ip"}}
+            {{> afQuickField name="port"}}
+            {{> afQuickField name="mbaddress"}}
+            {{> afQuickField name="details"}}
+            {{#unless autoSaveMode}}
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+                    <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
+                  </div>
+            {{/unless}}
+            {{/autoForm}}
+         </div>
+     </div>
+ </div>
+</template>

@@ -1,0 +1,29 @@
+<template name="pollingitem">
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12">
+       <div class="roundBack">
+         <a class="navbar-brand brandlink" id='backAction' href="#" data-action=back><i class="mdi mdi-arrow-left"></i></a>
+       </div>
+       <div class="content">
+
+         <div class="row formdiv" >
+            {{#autoForm id=docname type="update" collection=formCollectionD doc=thisItem autosave=false}}
+            {{> afQuickField name="devicename"}}
+            {{> afQuickField name="setup"}}
+            {{#if afFieldValueIs name="setup" value=true}}
+              {{> afQuickField name='config' options=configOptions}}
+            {{/if}}            
+            {{> afQuickField name="ip"}}
+            {{> afQuickField name="port"}}
+            {{> afQuickField name="sitenum"}}
+            {{> afQuickField name="details"}}
+            {{#unless autoSaveMode}}
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>
+                    <button type="reset" class="btn btn-default" disabled="{{disableButtons}}">Reset Form</button>
+                  </div>
+            {{/unless}}
+            {{/autoForm}}
+         </div>
+     </div>
+ </div>
+</template>

@@ -1,0 +1,9 @@
+<template name="subelementrow">
+  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 h-100 ">
+      <div class="row norightmargin">
+        {{#each variables}}
+            {{>mqttsubelement}}
+        {{/each}}
+      </div>
+  </div>
+</template>

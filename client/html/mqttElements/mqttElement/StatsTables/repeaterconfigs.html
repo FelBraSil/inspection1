@@ -1,0 +1,35 @@
+<template name="repeaterconfigs">
+  {{#each element in displayelement}}
+    <div class="panel-group elemform" >
+        <div class="">
+            <div class="thumbnail">
+              <div id="exTab3" class="">
+                <ul  class="nav nav-pills">
+                      {{#each group in element.groups}}
+                        <li class="{{#if firstIndex @index}} active {{/if}}">
+                          <a  href="#{{getParam group.__id}}" data-toggle="tab">{{getParamIf group.__name group.__id}}</a>
+                        </li>
+                      {{/each}}
+                      <li class="">
+                        <a  href="#system" data-toggle="tab">Sistema</a>
+                      </li>
+                    </ul>
+                      <div class="tab-content clearfix">
+                        {{#each group in element.groups}}
+                            <div class="tab-pane {{#if firstIndex @index}} active {{/if}}" id="{{getParam group.__id}}">
+
+                              <div class="table table-borderless table-sm table-dark" style="min-width:200px; padding:5px">
+                                  {{#each variable in group.variables}}
+                                      {{>statselement stat=variable objectid=element.__id}}
+                                  {{/each}}
+                              </div>
+                            </div>
+                        {{/each}}
+                        {{>systemelement element=element}}
+                      </div>
+              </div>
+            </div>
+         </div>
+       </div>
+  {{/each}}
+</template>

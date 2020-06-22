@@ -1,0 +1,74 @@
+
+i.devicesIcon{
+    color: #afbaff !important;
+}
+
+i.mapIcon{
+    color: #ff5c26 !important;
+}
+
+i.profileIcon{
+    color: #ff403a !important;
+}
+
+i.configIcon{
+    color: #ff0000 !important;
+}
+
+i.aboutIcon{
+    color: #d0dbff !important;
+}
+
+i.logoutIcon{
+    color: #ff0059 !important;
+}
+
+i.alertIcon{
+    color: #ffe417 !important;
+}
+
+i.mininode{
+    background-color: var(--sec-title-color) !important;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: -webkit-center;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 0px;
+    padding-top: 0px;
+    color: var(--main-highlight-color);
+    font-size: 30px;
+}
+
+i.ministat{
+    background-color: var(--sec-title-color) !important;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: -webkit-center;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 0px;
+    padding-top: 0px;
+    color: var(--main-highlight-color);
+    font-size: 30px;
+}
+
+i.objectCard.staticon{
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding-top: 6px;
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: blueviolet;
+}
+
+i.objectCard.mdi-wifi{
+    background-color: blueviolet;
+}
+
+i.objectCard.mdi-wifi-off{
+   background-color: red !important;
+}

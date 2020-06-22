@@ -1,0 +1,60 @@
+<template name="displaymant">
+    <div class="row">
+        {{#each itemList}}
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 h-100 fillwidth ">
+            <div class="thumbnail">
+                <div class="row">
+                    <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-2 h-100">
+                          <div class="circular--landscape">
+                            <a href="mantenimiento/{{_id}}"><img  src="{{imageFile picture}}" alt="image" /></a>
+                          </div>
+                    </div>
+
+                      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-10 h-100">
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 h-100">
+
+                              <i class="mdi mdi-read-more-outline" style="color:black">
+                                <a href="mantenimiento/{{_id}}">
+                                    <p class="text-center" style="font-size: x-large;" >{{equipoNombre idEquipo}}</p>
+                                </a>
+                              </i>
+                              <p class="none ">
+                                <a class="blackp" href="mantenimiento/{{_id}}">
+                                  <i class="mdi mdi-clock" style="color:black"></i>Inicio {{humanTime inicio}}
+                                </a>
+                                <a class="blackp" href="mantenimiento/{{_id}}">
+                                    <i class="mdi mdi-clock" style="color:black"></i>Duracion {{duration inicio createdAt}} Minutos
+                                </a>
+                              </p>
+
+                          </div>
+                          <div class="hidden-xs hidden-sm col-md-4 col-lg-4 h-100">
+                              <p class="none ">
+                                <a class="blackp" href="mantenimiento/{{_id}}">
+                                    <i class="mdi mdi-clock" style="color:black"></i>Termino {{humanTime createdAt}}
+                                </a>
+                              </p>
+
+                          </div>
+                          <div class="hidden-xs col-sm-6 col-md-4 col-lg-4 wrap h-100 blackp">
+                            <a href="mantenimiento/{{_id}}">
+                              <b>Observaciones: </b>{{details}}
+                            </a>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div  class="caption elementbuttons">
+                            <a href="#" ><i id="editSupervisor" class="mdi mdi-pencil" style="color:black;">Edit</i></a>  <a href="#" ><i id="deleteSupervisor" class="mdi mdi-delete" style="color:black">Delete</i></a>
+                          </div>
+                        </div>
+
+                      </div>
+                </div>
+
+            </div>
+        </div>
+        {{/each}}
+        <div class="col-md-6"></div>
+    </div>
+</template>

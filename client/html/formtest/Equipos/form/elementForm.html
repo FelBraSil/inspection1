@@ -1,0 +1,64 @@
+<template name="elementForm">
+  <div class="panel-group elemform">
+      <div class=" ">
+          <div class="panel-heading">
+              <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapse1">
+                    <div style="opacity:0.4;padding:5px">
+                      <div class="row nomargin">
+                               <div class="row">
+                                 <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
+                                     <a data-toggle="collapse" href="#collapse1"><img class="thumbnailimg" style="width:100%" src="/img/repetidor.svg" alt="image" /></a>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                                    <div class="row">
+                                      <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                        <a data-toggle="collapse" href="#collapse1">
+                                          <p class="text-center bigger"><b>+Agregar Nuevo</b></p>
+                                          <p></p><p></p><p></p>
+                                        </a>
+                                      </div>
+                                      <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                        <a data-toggle="collapse" href="#collapse1">
+                                          <p class="text-center smalltitle"><b>Numero Sitio</b></p> <p class="text-center bigger">----</p>
+                                        </a>
+                                      </div>
+                                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <a href="element/{{_id}}">
+                                          <p class="text-center smalltitle"><b>IP/Puerto</b></p> <p class="text-center bigger">--:--</p>
+                                        </a>
+                                      </div>
+                                    </div>
+                               </div>
+
+                               </div>
+                               <div class="row nomargin">
+                               </div>
+                       </div>
+                    </div>
+                  </a>
+              </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+
+                  {{#if specialedit}}
+                      {{> quickForm collection=formCollection id="insertTeamFormSpecial" type="insert"}}
+                  {{else}}
+                      {{#autoForm collection=formCollection id="insertTeamForm" type="insert"}}
+                        <fieldset>
+                          <legend>Repetidor</legend>
+                          {{> afQuickField name='nombre'}}
+                          {{> afQuickField name='Settings.networkpar.sitenumber'}}
+                          {{> afQuickField name='Settings.networkpar.repeaterip'}}
+                          {{> afQuickField name='Settings.networkpar.repeateripport'}}
+                          {{> afQuickField name='details' rows=6}}
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary">Insert</button>
+                      {{/autoForm}}
+                  {{/if}}
+              </div>
+          </div>
+      </div>
+  </div>
+</template>

@@ -1,0 +1,57 @@
+<template name="alarmlist">
+  {{#if offlineAlarm}}
+      <a href="/equipos"><h4 class="alert-heading"> <i class="mdi mdi-alert " ></i> Offline Devices</h4>
+      <p>Reported Offline devices: <span class="badge badge-danger">{{offlineAlarmQ}}</span></p>
+      <hr></a>
+  {{/if}}
+  {{#if setAlarmVarValue}}
+    <h4 class="alert-heading"> <i class="mdi mdi-alert " ></i> Received Alerts</h4>
+    <p>System has generated the following Alerts: <span class="badge badge-danger">{{setAlarmVarValueNum}}</span></p>
+    <hr>
+    {{#each alarmitem in getAlarmList}}
+        <a href="{{resolveTopic alarmitem true}}"><p class="mb-0"><i class="mdi mdi-alert-circle " ></i>
+          {{#each alarmsubitem in  resolveTopic alarmitem false}}
+              {{#if evalParam alarmsubitem.class "resource"}}
+                    <div  class="label label-default" style="">
+                    <i class="mdi mdi-server-network"></i> {{alarmsubitem.value}}
+                    </div>
+              {{else}}
+                  {{#if evalParam alarmsubitem.class "varname"}}
+                      <div  class="label label-danger alarm" style="background:rgba(150,10,10,0.7)!important">
+                      <i class="mdi mdi-comment-alert"></i> {{alarmsubitem.value}}
+                      </div>
+                  {{else}}
+                      {{#if evalParam alarmsubitem.class "subresource"}}
+                          <div  class="label label-default " style="">
+                          <i class="mdi mdi-plus-network"></i> {{alarmsubitem.value}}
+                          </div>
+                      {{else}}
+                          {{#if shortpaths}}
+
+                          {{else}}
+                                {{#if evalParam alarmsubitem.class "group"}}
+                                    <div  class="label label-info " style="">
+                                    <i class="mdi mdi-folder-multiple"></i> {{alarmsubitem.value}}
+                                    </div>
+                                {{else}}
+                                    {{#if evalParam alarmsubitem.class "resourcegroup"}}
+                                        <div  class="label label-primary" style="">
+                                        <i class="mdi mdi-google-circles-group"></i> {{alarmsubitem.value}}
+                                        </div>
+                                    {{else}}
+                                        <div  class="label label-warning alarm" style="">
+                                        <i class="mdi mdi-comment-alert-outline"></i> {{alarmsubitem.value}}
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+                          {{/if}}
+                      {{/if}}
+                  {{/if}}
+              {{/if}}
+          {{/each}}
+        </p></a>
+    {{/each}}
+  {{else}}
+     <h4 class="alert-heading"> <i class="mdi mdi-checkbox-marked-circle " ></i> No Alerts Generated</h4>
+  {{/if}}
+</template>

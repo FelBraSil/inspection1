@@ -1,0 +1,9 @@
+<template name="generalElement">
+  <div class="generalElementDiv">
+    {{#if Template.subscriptionsReady }}
+    {{#each mqttElementList}}
+    {{> mqttelement}}
+    {{/each}}
+    {{/if}}
+  </div>
+</template>
