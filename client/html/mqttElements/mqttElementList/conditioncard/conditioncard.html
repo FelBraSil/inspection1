@@ -1,0 +1,20 @@
+<template name="conditionCard">
+     <div class="objectCard maindiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <div class="objectCard parentdiv row ">
+           <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <i class="mdi mdi-play-circle"></i> Created Conditions
+           </div>
+       </div>
+        <div class="objectCard parentdiv row ">
+            <div class="objectCard statsdiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      {{#each collection}}
+                          {{>conditionbutton}}
+                      {{else}}
+                        <p>No Conditions created yet</p>
+                      {{/each}}
+                    </div>
+            </div>
+        </div>
+     </div>
+</template>

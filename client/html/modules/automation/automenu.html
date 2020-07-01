@@ -1,0 +1,21 @@
+<template name="automenu">
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+   <div class="generalElementDiv">
+     {{>backbutton}}
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller pb-150">
+       <div class="content h100">
+
+            {{> macrosCard collection=getMacrosCollection nopin="true"}}
+            {{> scheduleCard collection=getSchedulerCollection }}
+            {{> conditionCard collection=getConditionCollection }}
+
+
+         {{>biglinkto  link="/automation/macros"  text="Macros Management" iconColor="one" mdiIcon="mdi-book-multiple"}}
+         {{>biglinkto  link="/automation/schedule" text="Macros Shedule" iconColor="two" mdiIcon="mdi-calendar-clock"}}
+         {{>biglinkto  link="/automation/conditioned" text="Conditioned" iconColor="three"  mdiIcon="mdi-play-pause"}}
+
+     </div>
+   </div>
+   </div>
+  </div>
+</template>

@@ -1,0 +1,22 @@
+<template name="macrosCard">
+     <div class="objectCard maindiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <div class="objectCard parentdiv row ">
+           <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   {{#if nopin}}
+                        <i class="mdi mdi-play-circle"></i> Created Macros
+                   {{else}}
+                        <i class="mdi mdi-pin"></i> Pinned Macros
+                   {{/if}}
+           </div>
+       </div>
+        <div class="objectCard parentdiv row ">
+            <div class="objectCard statsdiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                      {{#each item in collection}}
+                          {{>macrosbutton element=item}}
+                      {{/each}}
+                    </div>
+            </div>
+        </div>
+     </div>
+</template>

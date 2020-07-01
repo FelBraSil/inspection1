@@ -1,0 +1,25 @@
+<template name="conditionbutton">
+
+         <div class="macrosbutton main col-xs-12 col-sm-6 col-md-4 col-lg-3 {{#if enabled}} {{else}} disabledmain {{/if}} ">
+           <a href="#" class="macrosbutton  {{#if enabled}}  on disableCondition  {{else}} off enableCondition disabledControl {{/if}}" >
+             <div class="macrossbutton macroscontrols" style="vertical-align: -webkit-baseline-middle;text-size-adjust: auto;display: flex;" >
+                <i class="mdi mdi-play-pause macrosbutton mainicon" title="CONDITIONS DETAILS: SOON"></i>
+                <div class="macrosbutton name" title="{{details}}"> {{name}} </div>
+
+                {{#if timed }}
+                    <i class="mdi mdi-timelapse macrosbutton icon mainicon six" title="Timed {{startTime}} to {{endTime}}"></i>
+                {{else}}
+                    <i class="mdi mdi-play-box-outline macrosbutton icon mainicon four" title="Always Active"></i>
+                {{/if}}
+
+                {{#if enabled}}
+                    <i class="mdi mdi-power macrosbutton icon on" title=" Disable Condition "></i>
+                {{else}}
+                    <i class="mdi mdi-power macrosbutton icon off" title=" Enable Condition "></i>
+                {{/if}}
+
+             </div>
+            </a>
+          </div>
+
+</template>

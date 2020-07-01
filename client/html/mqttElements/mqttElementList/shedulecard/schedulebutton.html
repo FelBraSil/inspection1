@@ -1,0 +1,21 @@
+<template name="schedulebutton">
+
+         <div class="macrosbutton main col-xs-12 col-sm-6 col-md-4 col-lg-3 {{#if enabled}} {{else}} disabledmain {{/if}} ">
+           <a href="#" class="macrosbutton  {{#if enabled}}  on disableSchedule  {{else}} off enableSchedule disabledControl {{/if}}" >
+             <div class="macrossbutton macroscontrols" style="vertical-align: -webkit-baseline-middle;text-size-adjust: auto;display: flex;" >
+                <i class="mdi mdi-calendar macrosbutton mainicon" title="{{name}} will execute at {{startTime}} {{#if execution}}  {{else}} and will execute OFF status at {{endTime}} {{/if}} "></i>
+                <div class="macrosbutton name" title="{{details}}"> {{name}} </div>
+
+                <i class="mdi {{#if execution}} mdi-timer {{else}}  mdi-timelapse {{/if}} macrosbutton icon off" title=" {{startTime}} {{#if execution}}  {{else}} to {{endTime}} {{/if}} "></i>
+
+                {{#if enabled}}
+                    <i class="mdi mdi-power macrosbutton icon on" title=" Disable Schedule "></i>
+                {{else}}
+                    <i class="mdi mdi-power macrosbutton icon off" title=" Enable Schedule "></i>
+                {{/if}}
+
+             </div>
+            </a>
+          </div>
+
+</template>

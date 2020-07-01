@@ -1,10 +1,11 @@
 <template name="mqttList">
   <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
    <div class="generalElementDiv">
-     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller">
+     {{>backbutton}}
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller pb-150">
        <div class="content">
          {{>displayMqttListTemplate displayelements=displayMqttList}}
-     </div> 
+     </div>
    </div>
    </div>
   </div>

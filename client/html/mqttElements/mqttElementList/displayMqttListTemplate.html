@@ -1,12 +1,15 @@
 <template name="displayMqttListTemplate">
   <div class="row" style="padding-left:10px">
+    {{#if getIfMacrosCollectionPinned}}
+       {{> macrosCard collection=getMacrosCollectionPinned}}
+    {{/if}}
       {{#each element in displayelements}}
          {{#if display element.enable.value}}
              {{>objectCard element=element elementid=elementid subelem=subelem subgroupid=subgroupid}}
          {{/if}}
       {{else}}
             {{>alertDiv message="The system has no elements, check the MQTT connection, and connect a compatible object to the broker."}}
-      {{/each}} 
+      {{/each}}
       <div class="col-md-6"></div>
   </div>
 

@@ -1,0 +1,105 @@
+<template name="macrosconditioned">
+
+  <div class="col-xs-12  col-sm-12  col-md-9  col-lg-10 nopad h100">
+   <div class="generalElementDiv">
+     {{>backbutton}}
+     <div class="col-xs-12  col-sm-12  col-md-12  col-lg-12 h-fill scroller pb-150">
+       <div class="content h100">
+
+               <div class="objectCard maindiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                     <div class="objectCard parentdiv row ">
+                         <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                 <a data-toggle="collapse" href="#collapseUser" class="whitelinks biglinkto">
+                                     <i class="mdi mdi-playlist-play biglinkto two"></i> <i class="mdi mdi-plus-circle biglinkto two"></i>  Create New Condition
+                                 </a>
+                         </div>
+                     </div>
+
+                       <div id="collapseUser" class="panel-collapse collapse ">
+                         <div class="objectCard parentdiv row ">
+                             <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    {{#autoForm id="newCondition" type="insert" collection=conditionCollection autosave=false}}
+                                    {{> afQuickField name="name"}}
+                                    {{> afQuickField name="enabled"}}
+                                    {{> afQuickField name="timed"}}
+                                    {{#if afFieldValueIs name="timed" value=true}}
+                                      {{> afQuickField name="startTime" type="time"}}
+                                      {{> afQuickField name="endTime" type="time"}}
+                                    {{/if}}
+                                    {{> afQuickField name="gate"}}
+                                    {{> afQuickField name="macros"}}
+                                    {{> afQuickField name="details"}}
+                                    {{#unless autoSaveMode}}
+                                          <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" >Create</button>
+                                          </div>
+                                    {{/unless}}
+                                    {{/autoForm}}
+                             </div>
+                       </div>
+                     </div>
+
+               </div>
+
+          {{#each getConditionCollection}}
+              <div class="objectCard maindiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <div class="objectCard parentdiv row ">
+                        <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          {{#if enabled}}
+                              <a data-toggle="collapse" href="#" class="whitelinks biglinkto disableCondition floatright" title="Enabled: click to disable">
+                                  <i class="mdi mdi-power biglinkto one"></i>
+                              </a>
+                          {{else}}
+                              <a data-toggle="collapse" href="#" class="whitelinks biglinkto enableCondition floatright" title="Disabled: click to enable">
+                                  <i class="mdi mdi-power biglinkto one disabledControl"></i>
+                              </a>
+                          {{/if}}
+                                <a data-toggle="collapse" href="#collapseMacros{{_id}}" class="whitelinks biglinkto">
+                                    <i class="mdi mdi-playlist-play biglinkto three"></i> <i class="mdi mdi-information biglinkto one" title="info here: SOON" ></i>
+                                    {{#if timed }} <i class="mdi mdi-timelapse biglinkto six" title="Timed"></i> {{else}} <i class="mdi mdi-play-box-outline biglinkto four" title="Always Active"></i> {{/if}}
+                                    {{name}}
+                                </a>
+
+                        </div>
+                    </div>
+
+                      <div id="collapseMacros{{_id}}" class="panel-collapse collapse ">
+                        <div class="objectCard parentdiv row ">
+                            <div class="objectCard icondiv col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                   {{#autoForm collection=conditionCollection doc=this id=this._id type="update" autosave=false}}
+                                   {{> afQuickField name="name"}}
+                                   {{> afQuickField name="enabled"}}
+                                   {{> afQuickField name="timed"}}
+                                   {{#if afFieldValueIs name="timed" value=true}}
+                                     {{> afQuickField name="startTime" type="time"}}
+                                     {{> afQuickField name="endTime" type="time"}}
+                                   {{/if}}
+                                   {{> afQuickField name="gate"}}
+                                   {{> afQuickField name="macros"}}
+                                   {{> afQuickField name="details"}}
+                                   {{#unless autoSaveMode}}
+                                         <div class="form-group">
+                                           <button type="submit" class="btn btn-primary" >Update</button>
+                                         </div>
+                                   {{/unless}}
+                                   {{/autoForm}}
+                            </div>
+                      </div>
+                    </div>
+
+              </div>
+          {{else}}
+              {{>biglinkto  link="#" text="No Conditions Created" iconColor="one"  mdiIcon="mdi-play-pause"}}
+          {{/each}}
+
+
+
+
+     </div>
+   </div>
+   </div>
+  </div>
+</template>

@@ -11,3 +11,38 @@
   --sec-element-color: #bf7f00;
   --gradient-element: linear-gradient(to left, #d41459, #911a6c);
 }
+
+
+//numbered Colors
+
+.one{
+   color: blueviolet;
+}
+
+.two{
+    color: #afbaff !important;
+}
+
+.three{
+    color: #ff5c26 !important;
+}
+
+.four{
+    color: #ff403a !important;
+}
+
+.five{
+    color: #ff0000 !important;
+}
+
+.six{
+    color: #d0dbff !important;
+}
+
+.seven{
+    color: #ff0059 !important;
+}
+
+.eight{
+    color: #ffe417 !important;
+}

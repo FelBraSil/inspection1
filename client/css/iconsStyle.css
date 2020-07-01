@@ -72,3 +72,22 @@ i.objectCard.mdi-wifi{
 i.objectCard.mdi-wifi-off{
    background-color: red !important;
 }
+
+i.biglinkto {
+  background-color: var(--sec-title-color) !important;
+  border-radius: 150px;
+  width: 30px;
+  height: 30px;
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 0px;
+  padding-top: 5px;
+  color: var(--main-highlight-color);
+  font-size: 20px !important;
+}
+
+i.biglinkto.disabledControl{
+  color: var(--sec-text-color) !important;
+  background-color:  var(--main-bg-color) !important;
+}

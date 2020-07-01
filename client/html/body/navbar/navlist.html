@@ -10,13 +10,20 @@
           </li>
 
           <li>
-            <a href="/systemmap" onclick="closefloatmenuZ()" >
+            <a href="/systemmap" onclick="closefloatmenu()" >
               <i class="mdi mdi-map mapIcon" ></i>
-               Map
+               MAP
             </a>
           </li>
 
           {{#if evalSystem "AMOS"}}
+
+            <li>
+              <a href="/automation" onclick="closefloatmenu()" >
+                <i class="mdi mdi-rotate-3d autoIcon" ></i>
+                 AUTOMATION
+              </a>
+            </li>
 
           {{else}}
 

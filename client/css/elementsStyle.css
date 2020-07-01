@@ -41,7 +41,7 @@
 }
 
 .bottomcontent{
-  padding:20px;
+  padding:10px;
   text-align: -webkit-center;
   display: flex;
 }
@@ -53,6 +53,7 @@
 .bottomcontent > a{
   text-align: -webkit-center;
 }
+
 
 .uppercontent{
   padding:5px;
@@ -124,6 +125,10 @@ input.anob{
 
 .h100{
   height: 100%;
+}
+
+.pb-150{
+  padding-bottom: 150px;
 }
 
 .panel-title > a:link{
@@ -239,6 +244,7 @@ input.anob{
     z-index:50;
     right: 10px;
     position: fixed;
+    border: 2px solid var(--sec-text-color);
 }
 
 body, html {
@@ -342,8 +348,7 @@ input.form-control{
   color: var(--main-highlight-color) !important;
 }
 
-.whitelinks a:focus {
-  background-color: rgba(0,0,0,1) !important;
+.whitelinks a:focus { 
   outline: 0;
     border: none;
     -moz-outline-style: none;
@@ -385,14 +390,11 @@ input.form-control{
   background-color: white;
 }
 
-
-
 .navbarlist-black  a {
   text-decoration: none;
   height:30px;
   color: rgb(255,255,255,0.8) !important;
 }
-
 
 .navbarlist-black  a:hover {
   background-color: rgba(0,0,0,0.2) !important;
@@ -561,7 +563,7 @@ small {
     width: 0px;
     margin-left: -1000px;
     z-index: 100;
-    -webkit-transition: width 0s; /* Safari */
+    -webkit-transition: width 0s;
     transition: width 0s;
 }
 
@@ -1951,4 +1953,137 @@ ul.objectCard> li > a {
 
 form.dimmerForm{
   width: 100%;
+}
+
+//----------------------------------------------
+//autoform
+
+input[type="checkbox"], input[type="radio"]{
+  width:30px !important;
+  height: 30px !important;
+}
+
+.checkbox  > label {
+    font-size: 15px !important;
+}
+
+.panel-title {
+  color: var(--main-text-color) !important;
+  border-color: var(--main-bg-color) !important;
+}
+
+.panel-heading  {
+  background-color: var(--sec-element-color) !important;
+  color: var(--main-text-color) !important;
+  border-color: var(--main-bg-color) !important;
+}
+
+.panel-default {
+  background-color: var(--main-element-color) !important;
+  color: var(--main-text-color) !important;
+  border-color: var(--main-bg-color) !important;
+}
+
+.list-group-item {
+  background-color: var(--main-element-color) !important;
+  color: var(--main-text-color) !important;
+  border-color: var(--main-bg-color) !important;
+}
+
+.panel-body {
+  background-color: var(--main-bg-color) !important;
+  border-color: var(--main-bg-color) !important;
+  font-size: 1 em !important;
+}
+
+.form-control{
+  background: var(--main-element-color) !important;
+  color: var(--main-text-color) !important;
+}
+
+input.form-control {
+    border: 0px;
+    background: var(--main-element-color) !important;
+    color: var(--main-text-color) !important;
+}
+
+.control-label{
+  font-size: 15px !important;
+}
+
+.autoform-array-item{
+  background-color: var(--main-bg-color) !important;
+  border-color: var(--main-text-color) !important;
+  border-width: 0px;
+}
+
+
+a.whitelinks.biglinkto {
+  font-size: 25px ;
+}
+
+
+
+
+.macrosbutton.main{
+   background: var(--sec-element-color);
+   min-height: 50px;
+   border-radius: 25px;
+   padding: 5px;
+   margin-bottom: 2px;
+}
+
+.macrosbutton.main.disabledmain{
+  background: var(--sec-bg-color);
+}
+
+.macrosbutton.mainicon{
+  font-size: 30px;
+  border-radius: 50%;
+  background: var(--main-bg-color);
+  padding: 5px;
+  margin-right: 5px;
+
+}
+
+.macrossbutton.macroscontrols{
+  color:  var(--main-text-color) !important;
+}
+
+.macrosbutton.name{
+  width: -webkit-fill-available;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  align-self: center;
+}
+
+.macrosbutton.mbutton{
+  float: right;
+  width: auto;
+}
+
+.macrosbutton.icon.on{
+  background-color: white;
+  color: black;
+}
+
+.macrosbutton.icon.off{
+  background-color: black;
+  color: white;
+}
+
+.macrosbutton.icon{
+  font-size: 30px;
+  border-radius: 50%;
+  padding: 5px;
+  float: right;
+}
+
+.floatright{
+  float: right;
+    z-index: 100;
+    position: absolute;
+    width: auto;
+    right: 0px;
 }

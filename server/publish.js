@@ -13,6 +13,9 @@ import { SystemVars } from '/lib/collections/systemvars.js';
 import { MapCollection } from '/lib/collections/maps/mapcollection.js';
 import { AmpDevices } from '/lib/collections/amp/ampcollection.js';
 import { Branches } from '/lib/collections/amp/branchescollection.js';
+import { Macros } from '/lib/collections/symbiot/macros.js';
+import { Scheduler } from '/lib/collections/symbiot/scheduler.js';
+import { Condition } from '/lib/collections/symbiot/conditioned.js';
 import '../lib/methods.js';
 
 
@@ -20,6 +23,18 @@ if (Meteor.isServer) {
 
     Meteor.publish('branches', function(){
       return Branches.find({});
+    });
+
+    Meteor.publish('macros', function(){
+      return Macros.find({});
+    });
+
+    Meteor.publish('condition', function(){
+      return Condition.find({});
+    });
+
+    Meteor.publish('scheduler', function(){
+      return Scheduler.find({});
     });
 
     Meteor.publish('ampdevices', function(){
