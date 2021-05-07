@@ -32,6 +32,6 @@
     "reactive-var": "^1.0.7",
     "simpl-schema": "^1.7.3",
     "templating": "^1.0.1",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
