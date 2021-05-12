@@ -30,7 +30,7 @@
     "popper.js": "^1.15.0",
     "rangeslider-js": "^3.2.5",
     "reactive-var": "^1.0.7",
-    "simpl-schema": "^1.7.3",
+    "simpl-schema": "^1.10.2",
     "templating": "^1.0.1",
     "underscore": "^1.9.1"
   }
